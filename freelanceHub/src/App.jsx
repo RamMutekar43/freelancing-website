@@ -1,11 +1,19 @@
-import { useState } from 'react'
-import './App.css'
+import HomePage from "./Pages/HomePage/HomePage"
+import AuthPage from "./Pages/AuthPage/AuthPage"
+import PageLayout from "./Layouts/PageLayout/PageLayout"
+import { Route, Routes } from "react-router-dom"
+
 
 function App() {
 
   return (
     <>
-      FreelanceHub
+    <PageLayout>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/auth" element={<AuthPage />} />
+    </Routes>
+    </PageLayout>
     </>
   )
 }
