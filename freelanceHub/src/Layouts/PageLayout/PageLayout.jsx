@@ -1,16 +1,20 @@
 // import Sidebar from '../../components/Sidebar/Sidebar'
 import { Box, Flex, Spinner } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 
 const PageLayout = ({children}) => {
+    const [isAuth, setIsAuth] = useState(false);
     return (
         <>
         <Flex>
             {/* left  sidebar */}
-            
+            {isAuth ? (
+                <>
                 <Box w={{base:"70px",md:"240px"}}>
                 {/* <Sidebar/> */}
                 </Box>
+                </>
+            ) : null}
 
             {/* Navbar */}
     

@@ -20,12 +20,7 @@ const Login = () => {
     value={inputs.password}
     onChange={(e)=>setInputs({...inputs,password:e.target.value})}
     />
-    {/* {error && (
-      <Alert.Root status='error' fontSize={13} p={2} borderRadius={4}>
-        <Alert.Indicator />
-          <Alert.Title>There was an error processing your request</Alert.Title>
-      </Alert.Root>
-    )} */}
+    
     <Button bg={"blue.500"} w={"full"} fontSize={"sm"} >
         Log in
     </Button>

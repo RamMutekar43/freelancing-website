@@ -14,17 +14,19 @@ const AuthForm = () => {
     <>
     <Box border={"1px solid gray"} p={5} borderRadius={4}>
       <VStack spaceY={4}>
-      <Image src='/Logo/logo-transparent-png.png' h={200} alt='Logo'/>
+      <Image src='' 
+      // h={200} 
+      alt='Logo'/>
         {/* <Box><h1>FreelanceHub</h1></Box> */}
 
         {isLogin ?  <Login/> : <Signup/>}
 
         {/* ------------ OR ----------- */}
-        <Flex alignItems={'center'} justifyContent={'center'} my={4} gap={1} w={'full'}>
+        {/* <Flex alignItems={'center'} justifyContent={'center'} my={4} gap={1} w={'full'}>
           <Box h={'1px'} bg={'gray.400'} flex={2}/>
           <Text mx={1} color={'white'}> OR </Text>
           <Box h={'1px'} bg={'gray.400'} flex={2}/>
-        </Flex>
+        </Flex> */}
 
         {/* <GoogleAuth/> */}
 

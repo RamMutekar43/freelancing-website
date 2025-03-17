@@ -10,7 +10,7 @@ const AuthPage = () => {
             <Flex alignItems={"center"} justifyContent={"center"} >
                 {/* left side image */}
                 <Box display={{base:"none", md:"block"}}>
-                    <Image src='' h={600}/>
+                    <Image src='/Logo/img1.svg' h={600}/>
                 </Box>
 
                 {/* right side form */}
