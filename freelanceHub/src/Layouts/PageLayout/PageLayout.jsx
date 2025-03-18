@@ -1,14 +1,20 @@
 // import Sidebar from '../../components/Sidebar/Sidebar'
 import Navbar from '../../components/Navbar/Navbar';
-import { Box, Flex, Spinner } from '@chakra-ui/react'
+import { Box, Container, Flex, Spinner } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar';
 
 const PageLayout = ({children}) => {
     const [isAuth, setIsAuth] = useState(true);
     return (
-        <>
+    <>
+        <Box backgroundColor={'#DFE8E6'}>
+        <Box 
+        backgroundColor={'#A0430A'}
+        w={'full'}>
         <Navbar/>
+        </Box>
+
         <Flex>
             {/* left  sidebar */}
             {isAuth ? (
@@ -22,11 +28,17 @@ const PageLayout = ({children}) => {
             {/* Navbar */}
     
             {/* right side conntent */}
-            <Box flex={1} w={{base:"calc(100% -70px)",md:"calc(100% -240px)"}}>
+            <Box 
+            maxH={'90vh'}
+            flex={1} 
+            w={{base:"calc(100% -70px)",md:"calc(100% -240px)"}}
+            overflowY={'auto'} 
+            >
                 {children}
             </Box>
         </Flex>
-        </>
+    </Box>
+    </>
     )
 }
 

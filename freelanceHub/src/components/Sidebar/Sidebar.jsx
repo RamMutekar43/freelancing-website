@@ -13,6 +13,7 @@ const Sidebar = () => {
   return (
     <>
     <Box
+    color={'#A0430A'}
     height={'100vh'}
     borderRight={"1px solid"}
     borderColor={"whiteAlpha.300"}
@@ -21,41 +22,43 @@ const Sidebar = () => {
     top={0}
     left={0}
     px={{base:2,md:4}}
+    h={'90vh'}
     >
 
-        <Flex direction={"column"} gap={10} width={'full'} height={'full'}>
-            <Link top={"/"} as={RouterLink} pl={2}  cursor={"pointer"} display={{base:'none',md:'block'}}>
-            {/* <Image src='/Logo/textLogo.png' w={150} /> */}
-            {/* <Avatar/> */}
-            </Link>
+    <Flex direction={"column"} gap={10} width={'full'} height={'full'}>
+        <Link top={"/"} as={RouterLink} pl={2}  cursor={"pointer"} display={{base:'none',md:'block'}}>
+          {/* <Image src='/Logo/textLogo.png' w={150} /> */}
+          {/* <Avatar/> */}
+        </Link>
 
-            <Link top={"/"} as={RouterLink} display={{base:'block',md:'none'}}
-            cursor={"pointer"}
-            borderRadius={6}
-            _hover={{bg:"whiteAlpha.200"}}
-            >
-            <Image src='/Logo/smLogo.png' h={50} />
-            </Link>
+        <Link top={"/"} as={RouterLink} display={{base:'block',md:'none'}}
+        cursor={"pointer"}
+        borderRadius={6}
+        _hover={{bg:"whiteAlpha.200"}}
+        >
+          <Image src='/Logo/smLogo.png' h={50} />
+        </Link>
 
             {/* SidebarItems */}
-            <Flex direction={"column"} gap={5} cursor={"pointer"}>
-				{/* <SidebarItems /> */}
-			</Flex>
+        <Flex direction={"column"} gap={5} cursor={"pointer"}>
+				  {/* <SidebarItems /> */}
+			  </Flex>
 
             {/* Logout */}
-            <Tooltip
-			showArrow
-			content={"Logout"}
-			positioning = {{placement:'right-center'}}
-			openDelay={500}
-            closeDelay={100}
-			display={{ base: "block", md: "none" }}
-			>
+        <Tooltip
+			  showArrow
+			  content={"Logout"}
+			  positioning = {{placement:'right-center'}}
+			  openDelay={500}
+        closeDelay={100}
+			  display={{ base: "block", md: "none" }}
+			  >
 				<Flex
+        transition={"background 0.2s ease-in-out"}
 				alignItems={"center"}
 				gap={4}
-				_hover={{ bg: "whiteAlpha.400" }}
-		        borderRadius={6}
+				_hover={{ bg: "whiteAlpha.400", shadow:"sm" }}
+		    borderRadius={6}
 				p={2}
 				w={{ base: 10, md: "full" }}
 				mt={"auto"}
@@ -63,6 +66,7 @@ const Sidebar = () => {
 				>
 					<BiLogOut size={25} />
 					<Button
+          color={'#A0430A'}
 					display={{ base: "none", md: "block" }}
 					variant={"ghost"}
 					_hover={{ bg: "transparent" }}

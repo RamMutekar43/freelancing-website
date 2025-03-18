@@ -7,38 +7,41 @@ const Navbar = () => {
   const [isAuth, setIsAuth] = useState(false);
   return (
     <>
-    <Container maxW={'11/12'} 
+    <Container 
+    h={'10vh'}
+    // color={'ivory'}
+    w={'full'}
     py={4} 
-    // py={9}
+    // backgroundColor={'teal'}
     >
         <Flex w={'full'} justifyContent={{base:'center',sm:"space-between"}} alignItems={'center'}>
             {/* <Image src="/Logo/textLogo.png" display={{base:'none',sm:"block"}} cursor={'pointer'} w={150}/> */}
             <Box fontWeight={"bold"}>FreelancHub</Box>
             <Flex gap={4} alignItems={'center'}>
                 <Link to={"/"}>
-                <Button variant={'outline'} size={'sm'}>
+                <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
                     Home
                 </Button>
                 </Link>
                 <Link to={"/get-job"}>
-                <Button variant={'outline'} size={'sm'}>
+                <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
                     Get Job
                 </Button>
                 </Link>
                 <Link to={"/hire-job"}>
-                <Button variant={'outline'} size={'sm'}>
+                <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
                     Hire Job
                 </Button>
                 </Link>
                 {!isAuth ? (
                     <>
                     <Link to={"/auth"}>
-                    <Button backgroundColor={'blue.400'} size={'sm'}>
+                    <Button backgroundColor={'blue.400'} size={'sm'} >
                     Login
                     </Button>
                     </Link>
                     <Link to={"/auth"}>
-                    <Button variant={'outline'} size={'sm'}>
+                    <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
                     Signup
                     </Button>
                     </Link>
