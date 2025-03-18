@@ -9,10 +9,9 @@ const Navbar = () => {
     <>
     <Container 
     h={'10vh'}
-    // color={'ivory'}
     w={'full'}
     py={4} 
-    // backgroundColor={'teal'}
+    px={0}
     >
         <Flex w={'full'} justifyContent={{base:'center',sm:"space-between"}} alignItems={'center'}>
             {/* <Image src="/Logo/textLogo.png" display={{base:'none',sm:"block"}} cursor={'pointer'} w={150}/> */}
