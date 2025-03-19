@@ -5,7 +5,7 @@ import AuthForm from '../../components/AuthForm/AuthForm'
 const AuthPage = () => {
   return (
     <>
-    <Flex alignItems={"center"} justifyContent={"center"} minH={"100vh"} p={4} color={"white"}>
+    <Flex alignItems={"center"} justifyContent={"center"} minH={"90vh"} p={4} color={"white"} backgroundColor={'black'}>
         <Container minW={"container.md"} p={0} >
             <Flex alignItems={"center"} justifyContent={"center"} >
                 {/* left side image */}

@@ -8,6 +8,8 @@ import { AiOutlineMenu } from 'react-icons/ai';
 
 const PageLayout = ({children}) => {
     const [isMenu, setIsMenu] = useState(false);
+    const [isAuth, setIsAuth] = useState(false);
+    
     
     return (
     <>
@@ -20,6 +22,8 @@ const PageLayout = ({children}) => {
 
         <Flex>
             {/* left  sidebar */}
+            {isAuth ? (
+            <>
             <VStack gap={0}>
             <Flex w={'full'}  h={'10vh'} px={3} alignItems={'center'}>
             <Button  
@@ -38,8 +42,9 @@ const PageLayout = ({children}) => {
                 </Box>
             ) : null}
             </VStack>
+            </>
+            ) : null}
 
-            {/* Navbar */}
     
             {/* right side conntent */}
             
