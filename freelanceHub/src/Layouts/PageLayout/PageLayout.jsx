@@ -1,12 +1,14 @@
 // import Sidebar from '../../components/Sidebar/Sidebar'
 import Navbar from '../../components/Navbar/Navbar';
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Button, Flex, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 
 const PageLayout = ({children}) => {
-    const [isAuth, setIsAuth] = useState(true);
+    const [isMenu, setIsMenu] = useState(false);
+    
     return (
     <>
     <Box backgroundColor={'#DFE8E6'}>
@@ -18,13 +20,24 @@ const PageLayout = ({children}) => {
 
         <Flex>
             {/* left  sidebar */}
-            {isAuth ? (
-                <>
+            <VStack>
+            <Flex w={'full'}  h={'10vh'} px={3} alignItems={'center'}>
+            <Button  
+            backgroundColor={"#DFE8E6"} 
+            onClick={()=>setIsMenu(!isMenu)}
+            _hover={{cursor:'pointer',shadow:"sm"}}
+            py={4}
+            px={2}>
+                <AiOutlineMenu color='black' size={40}/>
+            </Button>
+            </Flex>
+
+            {isMenu ? (
                 <Box w={{base:"70px",md:"240px"}}>
                 <Sidebar/>
                 </Box>
-                </>
             ) : null}
+            </VStack>
 
             {/* Navbar */}
     

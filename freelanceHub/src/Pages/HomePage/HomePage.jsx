@@ -3,13 +3,17 @@ import Navbar from '../../components/Navbar/Navbar'
 import React from 'react'
 import Services from '../../components/Services/Services'
 import { Box } from '@chakra-ui/react'
+import ClientReviews from '../../components/ClientReviews/ClientReviews'
 
 const HomePage = () => {
   return (
     <>
-    <Box backgroundColor={'whiteAlpha.500'} ms={5} me={3} my={2} borderRadius={15}>
+    <Box backgroundColor={'whiteAlpha.500'} 
+    // ms={5} 
+    me={3} my={5} borderRadius={15}>
     <WebInfo/>
     <Services/>
+    <ClientReviews/>
     </Box>
     </>
   )

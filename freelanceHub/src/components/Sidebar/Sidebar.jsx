@@ -1,7 +1,7 @@
 import { Box, Flex, Link,  Image, Button} from '@chakra-ui/react'
 import { Avatar } from '../ui/avatar'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { BiLogOut } from 'react-icons/bi'
 import { Link as RouterLink } from 'react-router-dom'
 import { Tooltip } from '../ui/tooltip'
@@ -22,7 +22,7 @@ const Sidebar = () => {
     top={0}
     left={0}
     px={{base:2,md:4}}
-    h={'90vh'}
+    h={'80vh'}
     >
 
     <Flex direction={"column"} gap={10} width={'full'} height={'full'}>
@@ -31,13 +31,6 @@ const Sidebar = () => {
           {/* <Avatar/> */}
         </Link>
 
-        <Link top={"/"} as={RouterLink} display={{base:'block',md:'none'}}
-        cursor={"pointer"}
-        borderRadius={6}
-        _hover={{bg:"whiteAlpha.200"}}
-        >
-          <Image src='/Logo/smLogo.png' h={50} />
-        </Link>
 
             {/* SidebarItems */}
         <Flex direction={"column"} gap={5} cursor={"pointer"}>

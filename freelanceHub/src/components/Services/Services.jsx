@@ -61,12 +61,12 @@ const Services = () => {
         <Text
         color={'black'}
         fontWeight={'medium'}
-        fontSize={'3xl'}
+        fontSize={'5xl'}
         pt={3}
         >
           Service
         </Text>
-        <FcServices size={50}/>
+        <FcServices size={60}/>
       </Flex>
     <Grid
     templateColumns="repeat(4, 1fr)"
