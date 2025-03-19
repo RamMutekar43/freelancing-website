@@ -8,11 +8,11 @@ const PageLayout = ({children}) => {
     const [isAuth, setIsAuth] = useState(true);
     return (
     <>
-        <Box backgroundColor={'#DFE8E6'}>
+    <Box backgroundColor={'#DFE8E6'}>
         <Box 
         backgroundColor={'#A0430A'}
         w={'full'}>
-        <Navbar/>
+            <Navbar/>
         </Box>
 
         <Flex>
