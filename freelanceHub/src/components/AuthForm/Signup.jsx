@@ -2,6 +2,7 @@ import React, {use, useState} from 'react'
 import { Alert, Box, Button, Input } from '@chakra-ui/react' 
 import { InputGroup } from '../ui/input-group'
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -15,6 +16,13 @@ const Signup = () => {
     })
     
     const [showPassword, setShowPassword] = useState(false)
+    const [isUser, setIsUser] = useState(false);
+    const navigate = useNavigate()
+
+    // const handleSignup = ()=>{
+    //  localStorage.setItem("user",!isUser)
+    //  navigate('/')
+    // }
     
 
   return (
@@ -45,7 +53,6 @@ const Signup = () => {
     endElement={
         <Box h={'full'} position={'absolute'} left={-3}>
         <Button variant={'ghost'} size={'sm'} onClick={()=>{setShowPassword(!showPassword)}} px={0} 
-        // _hover={{bg:'none'}}
         >
             {showPassword ? <IoMdEye/> : <IoMdEyeOff/>}
         </Button>
@@ -61,6 +68,7 @@ const Signup = () => {
     />
     </InputGroup>
     <Button bg={"blue.500"} w={"full"} fontSize={"sm"} 
+    // onClick={handleSignup}
     >Sign up</Button>
     </>
   )

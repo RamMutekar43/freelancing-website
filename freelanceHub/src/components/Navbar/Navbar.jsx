@@ -5,6 +5,11 @@ import { Avatar } from '../ui/avatar'
 
 const Navbar = () => {
   const [isAuth, setIsAuth] = useState(false);
+
+//   const handleLogout = ()=>{
+//     localStorage.removeItem("user");
+//   }
+
   return (
     <>
     <Container 
@@ -47,11 +52,24 @@ const Navbar = () => {
                     </>
                 ) : (
                 <>
+                <Link to={"/auth"}>
+                <Button 
+                variant={'outline'} 
+                size={'sm'} border={'1px solid #A0430A'}
+                 _hover={{background:'transparent', shadow:'sm'}} 
+                 color={'white'}
+                //  onClick={handleLogout}
+                 >
+                Logout
+                </Button>
+                </Link>
                 <Link to={""}>
                 <Avatar size={'xl'}/>
                 </Link>
                 </>
                 )}
+
+                
 
             </Flex>
         </Flex>

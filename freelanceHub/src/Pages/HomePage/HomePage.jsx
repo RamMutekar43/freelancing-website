@@ -10,7 +10,7 @@ const HomePage = () => {
     <>
     <Box backgroundColor={'whiteAlpha.500'} 
     // ms={5} 
-    me={3} my={5} borderRadius={15}>
+     my={5} borderRadius={15}>
     <WebInfo/>
     <Services/>
     <ClientReviews/>

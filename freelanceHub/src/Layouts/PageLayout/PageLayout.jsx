@@ -8,7 +8,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 
 const PageLayout = ({children}) => {
     const [isMenu, setIsMenu] = useState(false);
-    const [isAuth, setIsAuth] = useState(false);
+    const [isAuth, setIsAuth] = useState(true);
     
     
     return (
