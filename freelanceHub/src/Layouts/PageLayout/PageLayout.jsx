@@ -20,7 +20,7 @@ const PageLayout = ({children}) => {
 
         <Flex>
             {/* left  sidebar */}
-            <VStack>
+            <VStack gap={0}>
             <Flex w={'full'}  h={'10vh'} px={3} alignItems={'center'}>
             <Button  
             backgroundColor={"#DFE8E6"} 
