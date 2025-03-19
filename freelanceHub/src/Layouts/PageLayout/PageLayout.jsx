@@ -1,8 +1,9 @@
 // import Sidebar from '../../components/Sidebar/Sidebar'
 import Navbar from '../../components/Navbar/Navbar';
-import { Box, Container, Flex, Spinner } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar';
+
 
 const PageLayout = ({children}) => {
     const [isAuth, setIsAuth] = useState(true);
@@ -28,6 +29,7 @@ const PageLayout = ({children}) => {
             {/* Navbar */}
     
             {/* right side conntent */}
+            
             <Box 
             maxH={'90vh'}
             flex={1} 

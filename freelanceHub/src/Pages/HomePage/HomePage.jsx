@@ -7,7 +7,7 @@ import { Box } from '@chakra-ui/react'
 const HomePage = () => {
   return (
     <>
-    <Box backgroundColor={'whiteAlpha.500'} me={5} my={2} borderRadius={15}>
+    <Box backgroundColor={'whiteAlpha.500'} ms={5} me={3} my={2} borderRadius={15}>
     <WebInfo/>
     <Services/>
     </Box>
