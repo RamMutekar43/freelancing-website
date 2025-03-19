@@ -56,7 +56,7 @@ const Services = () => {
   
   return (
     <>
-    <VStack >
+    <VStack pt={10}>
       <Flex textAlign={'start'} w={'full'} px={5} alignItems={'center'} gap={2}>
         <Text
         color={'black'}
