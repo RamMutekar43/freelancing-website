@@ -1,4 +1,4 @@
-import { Box, Grid, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, Grid, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 import Service from './Service'
 import { FaCode, FaQuidditch } from 'react-icons/fa';
@@ -7,6 +7,7 @@ import { MdDeveloperMode, MdOutlineVideoCameraBack } from 'react-icons/md';
 import { TfiWrite } from 'react-icons/tfi';
 import { GoGraph } from 'react-icons/go';
 import { SlEarphonesAlt } from 'react-icons/sl';
+import { FcServices } from 'react-icons/fc';
 
 const Services = () => {
 
@@ -55,16 +56,18 @@ const Services = () => {
   
   return (
     <>
-    <VStack pt={20}>
-      <Box textAlign={'start'} w={'full'} px={5}>
+    <VStack >
+      <Flex textAlign={'start'} w={'full'} px={5} alignItems={'center'} gap={2}>
         <Text
         color={'black'}
         fontWeight={'medium'}
         fontSize={'3xl'}
         pt={3}
-        >Service
+        >
+          Service
         </Text>
-      </Box>
+        <FcServices size={50}/>
+      </Flex>
     <Grid
     templateColumns="repeat(4, 1fr)"
     gap={4}

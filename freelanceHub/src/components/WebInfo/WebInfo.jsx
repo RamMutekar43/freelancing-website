@@ -8,7 +8,8 @@ const WebInfo = () => {
     <Flex color={'black'} 
     justifyContent={'space-between'} 
     alignItems={'flex-end'} h={'full'} 
-    p={14}>
+    p={14}
+    >
 
       <Text 
       textStyle={'xl'} 
