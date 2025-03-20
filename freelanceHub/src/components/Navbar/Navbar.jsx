@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Avatar } from '../ui/avatar'
 
 const Navbar = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
 
 //   const handleLogout = ()=>{
 //     localStorage.removeItem("user");
