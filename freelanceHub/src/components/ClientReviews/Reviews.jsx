@@ -17,7 +17,7 @@ import { Box, Container, Flex, Image, Link, Text, VStack } from '@chakra-ui/reac
 const Reviews = () => {
     return (
         <>
-        <Flex w={'full'} py={5}>
+        <Flex w={'full'} p={5}>
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
@@ -33,7 +33,7 @@ const Reviews = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-                <Flex gap={10}>
+                <Flex gap={10} px={20}py={10} >
                     <Image src={'./public/reviewImg.avif'} h={400} border={'1px solid gray'} borderRadius={20}/>
                     <VStack alignItems={'self-start'} gap={5} my={'auto'}>
                         <Text textStyle={'lg'}  fontWeight={'light'}>
@@ -52,7 +52,7 @@ const Reviews = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-                <Flex gap={10}>
+                <Flex gap={10} px={20}py={10} >
                     <Image src={'./public/reviewImg.avif'} h={400} border={'1px solid gray'} borderRadius={20}/>
                     <VStack alignItems={'self-start'} gap={5} my={'auto'}>
                         <Text textStyle={'lg'}  fontWeight={'light'}>
@@ -71,7 +71,7 @@ const Reviews = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-                <Flex gap={10}>
+                <Flex gap={10} px={20}py={10} >
                     <Image src={'./public/reviewImg.avif'} h={400} border={'1px solid gray'} borderRadius={20}/>
                     <VStack alignItems={'self-start'} gap={5} my={'auto'}>
                         <Text textStyle={'lg'}  fontWeight={'light'}>
@@ -88,6 +88,7 @@ const Reviews = () => {
                     </VStack>
                 </Flex>
             </SwiperSlide>
+
 
           </Swiper>
           
