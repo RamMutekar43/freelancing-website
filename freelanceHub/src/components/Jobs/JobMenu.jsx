@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { Box, Button, Flex, Menu, Portal, Text } from "@chakra-ui/react"
 import { RiMenuSearchLine } from 'react-icons/ri'
 
-const JobMenu = () => {
+const JobMenu = ({domains}) => {
   const [isOption, setIsOption] = useState("");
-  localStorage.setItem("Option",isOption);
+  const setMenu = ()=>{
+    localStorage.setItem("option",isOption)
+  }
+  setMenu()
 
   return (
     <>
@@ -19,30 +22,15 @@ const JobMenu = () => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.Item value="Web Development" onClick={()=>setIsOption(value)}>
-              Web Development
-            </Menu.Item>
-            <Menu.Item value="Graphic Design">
-              Graphic Design
-            </Menu.Item>
-            <Menu.Item value="Mobile App Development">
-              Mobile App Development
-            </Menu.Item>
-            <Menu.Item value="Content Writing">
-              Content Writing
-            </Menu.Item>
-            <Menu.Item value="Digital Marketing">
-              Digital Marketing
-            </Menu.Item>
-            <Menu.Item value="UI/UX Design">
-              UI/UX Design
-            </Menu.Item>
-            <Menu.Item value="Video editing">
-              Video editing
-            </Menu.Item>
-            <Menu.Item value="Virtual Assistant">
-              Virtual Assistant
-            </Menu.Item>
+            {domains.map((e,key)=>{
+              return(
+                <>
+                <Menu.Item value={e} key={key} onClick={()=>setIsOption(e)}>
+                {e}
+                </Menu.Item>
+                </>
+              )
+            })}
           </Menu.Content>
         </Menu.Positioner>
       </Portal>

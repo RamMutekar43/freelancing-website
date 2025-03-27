@@ -4,16 +4,22 @@ import { Flex, Text, VStack, Box, Button, Container } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 
 
-// https://dummyjson.com/c/3616-bd03-43c7-8e7d
+// https://dummyjson.com/c/a9f5-a3fb-4cba-a23d
 const GetJob = () => {
   const [isJobs, setIsJobs] = useState([]);
+  const [isMenu, setIsMenu] = useState([]);
 
   useEffect(()=>{
     const getJob = async ()=>{
-      const response = await fetch("https://dummyjson.com/c/3616-bd03-43c7-8e7d")
-      const data = await response.json();
-      console.log(data);
-      setIsJobs(data.jobs);
+      try {
+        const response = await fetch("https://dummyjson.com/c/a9f5-a3fb-4cba-a23d")
+        const data = await response.json();
+      
+        setIsJobs(data.jobs);
+        setIsMenu(data.jobs.domains)
+      } catch (error) {
+        console.log("ERROR! : ", error)
+      }
     }
     getJob();
   },[])
@@ -21,7 +27,7 @@ const GetJob = () => {
     <>
     <Flex backgroundColor={'whiteAlpha.500'} my={5} borderRadius={15} py={5} >
         <Container w={'4/5'}>
-            {isJobs.map((e,key)=>{
+            {isJobs.filter((e,key)=>{
               return(
                 <>
                 <Job title={e.title} description={e.description} budget={e.budget} key={key}/>
@@ -31,7 +37,7 @@ const GetJob = () => {
         </Container>
 
         <Box mt={5} position={"fixed"} right={6} >
-            <JobMenu/>
+            <JobMenu domains={isMenu}/>
         </Box>
     </Flex>
     
