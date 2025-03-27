@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <>
     <Box
-    color={'#A0430A'}
+    color={'black'}
     height={'100vh'}
     borderRight={"1px solid"}
     borderColor={"whiteAlpha.300"}
@@ -59,7 +59,7 @@ const Sidebar = () => {
 				>
 					<BiLogOut size={25} />
 					<Button
-          color={'#A0430A'}
+          color={'black'}
 					display={{ base: "none", md: "block" }}
 					variant={"ghost"}
 					_hover={{ bg: "transparent" }}

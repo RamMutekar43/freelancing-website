@@ -23,17 +23,17 @@ const Navbar = () => {
             <Box fontWeight={"bold"}>FreelancHub</Box>
             <Flex gap={4} alignItems={'center'}>
                 <Link to={"/"}>
-                <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
+                <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm', backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
                     Home
                 </Button>
                 </Link>
                 <Link to={"/get-job"}>
-                <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
+                <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
                     Get Job
                 </Button>
                 </Link>
                 <Link to={"/hire-job"}>
-                <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
+                <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
                     Hire Job
                 </Button>
                 </Link>
@@ -45,7 +45,7 @@ const Navbar = () => {
                     </Button>
                     </Link>
                     <Link to={"/auth"}>
-                    <Button variant={'outline'} size={'sm'} border={'1px solid #A0430A'} _hover={{background:'transparent', shadow:'sm'}} color={'white'}>
+                    <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
                     Signup
                     </Button>
                     </Link>
@@ -55,8 +55,8 @@ const Navbar = () => {
                 <Link to={"/auth"}>
                 <Button 
                 variant={'outline'} 
-                size={'sm'} border={'1px solid #A0430A'}
-                 _hover={{background:'transparent', shadow:'sm'}} 
+                size={'sm'} border={'1px solid black'}
+                 _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} 
                  color={'white'}
                 //  onClick={handleLogout}
                  >

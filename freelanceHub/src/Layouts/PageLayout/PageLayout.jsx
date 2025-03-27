@@ -4,6 +4,7 @@ import { Box, Button, Flex, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { AiOutlineMenu } from 'react-icons/ai';
+import Footer from '../../components/Footer/Footer';
 
 
 const PageLayout = ({children}) => {
@@ -15,7 +16,7 @@ const PageLayout = ({children}) => {
     <>
     <Box backgroundColor={'#DFE8E6'}>
         <Box 
-        backgroundColor={'#A0430A'}
+        backgroundColor={'black'}
         w={'full'}>
             <Navbar/>
         </Box>
@@ -57,6 +58,12 @@ const PageLayout = ({children}) => {
                 {children}
             </Box>
         </Flex>
+
+        {/* <Box 
+        backgroundColor={'#A0430A'}
+        w={'full'}>
+            <Footer/>
+        </Box> */}
     </Box>
     </>
     )
