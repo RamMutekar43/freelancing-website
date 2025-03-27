@@ -1,10 +1,14 @@
-import React from 'react'
-import { Button, Flex, Menu, Portal, Text } from "@chakra-ui/react"
+import React, { useState } from 'react'
+import { Box, Button, Flex, Menu, Portal, Text } from "@chakra-ui/react"
 import { RiMenuSearchLine } from 'react-icons/ri'
 
 const JobMenu = () => {
+  const [isOption, setIsOption] = useState("");
+  localStorage.setItem("Option",isOption);
+
   return (
     <>
+    <Box>
     <Menu.Root>
       <Menu.Trigger asChild>
         <Flex color={'black'} gap={2} alignItems={'center'} cursor={'pointer'} shadow={'sm'} p={3} borderRadius={5}>
@@ -15,7 +19,7 @@ const JobMenu = () => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.Item value="Web Development">
+            <Menu.Item value="Web Development" onClick={()=>setIsOption(value)}>
               Web Development
             </Menu.Item>
             <Menu.Item value="Graphic Design">
@@ -43,6 +47,7 @@ const JobMenu = () => {
         </Menu.Positioner>
       </Portal>
     </Menu.Root>
+    </Box>
     </>
   )
 }

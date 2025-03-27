@@ -1,6 +1,6 @@
 import JobMenu from "../../components/Jobs/JobMenu"
 import Job from "../../components/Jobs/Job"
-import { Flex, Text, VStack, Box, Button } from '@chakra-ui/react'
+import { Flex, Text, VStack, Box, Button, Container } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 
 
@@ -19,8 +19,8 @@ const GetJob = () => {
   },[])
   return (
     <>
-    <Flex backgroundColor={'whiteAlpha.500'} my={5} borderRadius={15} py={5} ps={7} pe={8}>
-        <VStack me={20} >
+    <Flex backgroundColor={'whiteAlpha.500'} my={5} borderRadius={15} py={5} >
+        <Container w={'4/5'}>
             {isJobs.map((e,key)=>{
               return(
                 <>
@@ -28,9 +28,9 @@ const GetJob = () => {
                 </>
               )
             })}
-        </VStack>
+        </Container>
 
-        <Box mt={5} position={"fixed"} right={6}>
+        <Box mt={5} position={"fixed"} right={6} >
             <JobMenu/>
         </Box>
     </Flex>
