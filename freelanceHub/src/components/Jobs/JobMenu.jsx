@@ -15,20 +15,29 @@ const JobMenu = () => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.Item value="new-txt-a">
-              New Text File <Menu.ItemCommand>⌘E</Menu.ItemCommand>
+            <Menu.Item value="Web Development">
+              Web Development
             </Menu.Item>
-            <Menu.Item value="new-file-a">
-              New File... <Menu.ItemCommand>⌘N</Menu.ItemCommand>
+            <Menu.Item value="Graphic Design">
+              Graphic Design
             </Menu.Item>
-            <Menu.Item value="new-win-a">
-              New Window <Menu.ItemCommand>⌘W</Menu.ItemCommand>
+            <Menu.Item value="Mobile App Development">
+              Mobile App Development
             </Menu.Item>
-            <Menu.Item value="open-file-a">
-              Open File... <Menu.ItemCommand>⌘O</Menu.ItemCommand>
+            <Menu.Item value="Content Writing">
+              Content Writing
             </Menu.Item>
-            <Menu.Item value="export-a">
-              Export <Menu.ItemCommand>⌘S</Menu.ItemCommand>
+            <Menu.Item value="Digital Marketing">
+              Digital Marketing
+            </Menu.Item>
+            <Menu.Item value="UI/UX Design">
+              UI/UX Design
+            </Menu.Item>
+            <Menu.Item value="Video editing">
+              Video editing
+            </Menu.Item>
+            <Menu.Item value="Virtual Assistant">
+              Virtual Assistant
             </Menu.Item>
           </Menu.Content>
         </Menu.Positioner>

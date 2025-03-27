@@ -6,7 +6,7 @@ const JobDescription = () => {
   return (
     <>
     <Box py={2}>
-    <Dialog.Root size={'lg'}>
+    <Dialog.Root size={'lg'} placement={'center'}>
       <Dialog.Trigger asChild>
 
         <Flex gap={2} alignItems={'center'} cursor={'pointer'} color={'blue.700'}>
