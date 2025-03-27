@@ -5,7 +5,7 @@ import JobDescription from './JobDescription'
 const Job = () => {
   return (
     <>
-    <Box px={20} py={5}>
+    <Box pe={10} py={5}>
     <Flex backgroundColor={'whiteAlpha.400'} w={'full'} shadow={'sm'} borderRadius={5}>
                 <VStack w={'4/5'} py={5} px={10} >
                     <Flex color={'black'} w={'full'} gap={2} alignItems={'baseline'}>
