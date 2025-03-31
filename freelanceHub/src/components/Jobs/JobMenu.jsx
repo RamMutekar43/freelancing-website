@@ -1,42 +1,40 @@
-import React, { useState } from 'react'
-import { Box, Button, Flex, Menu, Portal, Text } from "@chakra-ui/react"
-import { RiMenuSearchLine } from 'react-icons/ri'
+import { Button, Menu, Portal , Box, InputGroup, Input, VStack} from "@chakra-ui/react"
+import React from 'react'
+import { LuSearch } from "react-icons/lu"
 
-const JobMenu = ({domains}) => {
-  const [isOption, setIsOption] = useState("");
-  const setMenu = ()=>{
-    localStorage.setItem("option",isOption)
-  }
-  setMenu()
-
+const JobMenu = ({domain}) => {
   return (
-    <>
-    <Box>
-    <Menu.Root>
+    <Box w={'full'}>
+      <Menu.Root w={'full'}>
       <Menu.Trigger asChild>
-        <Flex color={'black'} gap={2} alignItems={'center'} cursor={'pointer'} shadow={'sm'} p={3} borderRadius={5}>
-            <Text>Services</Text>
-            <RiMenuSearchLine size={20} />
-        </Flex>
+        <Box w={'full'}>
+        <InputGroup flex="1" startElement={<LuSearch  />} color={'black'} outlineColor={'pink'} backgroundColor={'whiteAlpha.700'} w={'full'}>
+          <Input placeholder="Search contacts" _placeholder={{color:"blackAlpha.700"}} h={'7vh'}/>
+        </InputGroup>
+        </Box>
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
-          <Menu.Content>
-            {domains.map((e,key)=>{
-              return(
-                <>
-                <Menu.Item value={e} key={key} onClick={()=>setIsOption(e)}>
-                {e}
-                </Menu.Item>
-                </>
-              )
-            })}
+        <Menu.Positioner w={'1/2'}>
+          <Menu.Content backgroundColor={'white'} color={'black'} w={'full'}>
+          <VStack>
+              {domain.map((e,key)=>{
+                          return(
+                          <>
+                            {/* <Link to={'/get-job'}> */}
+                            <Box value={e} key={key} w={'full'} color={'black'}>
+                            {e}
+                            </Box>
+                            {/* </Link> */}
+                          </>
+                          )
+              })}
+            </VStack>
+        
           </Menu.Content>
         </Menu.Positioner>
       </Portal>
     </Menu.Root>
     </Box>
-    </>
   )
 }
 
