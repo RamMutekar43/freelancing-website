@@ -2,10 +2,7 @@
 import Job from "../../components/Jobs/Job"
 import { VStack, Box, Button, Container, Input, InputGroup, Text, Flex } from '@chakra-ui/react'
 import React, {  useEffect, useState } from 'react'
-// import { LuSearch } from "react-icons/lu"
 import { useNavigate } from "react-router-dom"
-// import { Menu } from "@chakra-ui/react"
-import JobMenu from "../../components/Jobs/JobMenu"
 import { LuSearch } from "react-icons/lu"
 
 
@@ -38,10 +35,24 @@ const GetJob = () => {
     <VStack backgroundColor={'whiteAlpha.500'} my={5} borderRadius={15} py={5} minH={'100vh'}>
         
         <Box w={'1/2'}>
-          <InputGroup flex="1" startElement={<LuSearch  />} color={'black'} outlineColor={'pink'} backgroundColor={'whiteAlpha.700'} w={'full'}>
-              <Input placeholder="Search contacts" _placeholder={{color:"blackAlpha.700"}} h={'7vh'} value={selectedDomain} onChange={(e)=>setSelectedDomain(e.target.value)}/>
+          {/* Search field */}
+          <InputGroup flex="1" startElement={<LuSearch /> } color={'black'} backgroundColor={'whiteAlpha.700'} w={'full'} borderRadius={'full'} >
+              <Input placeholder="Search Domain..." 
+              _placeholder={{color:"blackAlpha.700"}} 
+              h={'7vh'} 
+              value={selectedDomain} 
+              onChange={(e)=>setSelectedDomain(e.target.value)} 
+              borderStyle={'none'} 
+              border={'1px solid '} 
+              borderColor={'blue.200'} 
+              borderRadius={'full'}
+              outlineColor={'blue.400'}
+              
+              />
           </InputGroup>
         </Box>
+
+        {/* Jobs */}
         <Container w={'4/5'}>
 
           {selectedDomain ? isJobs.map((e,key)=>{
