@@ -19,7 +19,7 @@ const Freelancer = ({url, username, domain, description, rating}) => {
         border={'1px solid rgb(208, 213, 212)'} >
             
             <Box w={40} h={40}>
-            <Avatar  w={40} h={40} url={url}/>
+            <Avatar  w={40} h={40} src={url}/>
             </Box>
 
             <Heading as={"h1"} size={'2xl'}>{username}</Heading>
@@ -29,7 +29,7 @@ const Freelancer = ({url, username, domain, description, rating}) => {
             </Box>
 
             <Box>
-            <RatingGroup.Root count={5} defaultValue={4} size="lg"colorPalette={'yellow'} >
+            <RatingGroup.Root count={5} defaultValue={rating} size="lg"colorPalette={'yellow'} >
                 <RatingGroup.HiddenInput/>
                 <RatingGroup.Control />
             </RatingGroup.Root>
