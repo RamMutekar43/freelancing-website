@@ -7,14 +7,14 @@ import useAuthStore from '../../Store/authStore'
 const Navbar = () => {
   const isAuth  = useAuthStore(state => state.user)
   const logoutUser = useAuthStore( state => state.logout)
-  const navigate = useNavigate()
+  const Navigate = useNavigate()
 
 //   console.log(isAuth)
 
   const handleLogout = ()=>{
     localStorage.removeItem('user')
     logoutUser();
-    navigate('/auth')
+    // Navigate('/auth')
   }
 
   return (
