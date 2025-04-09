@@ -1,14 +1,21 @@
 import { Box, Button, Container, Flex, Image } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Avatar } from '../ui/avatar'
+import useAuthStore from '../../Store/authStore'
 
 const Navbar = () => {
-  const [isAuth, setIsAuth] = useState(true);
+  const isAuth  = useAuthStore(state => state.user)
+  const logoutUser = useAuthStore( state => state.logout)
+  const navigate = useNavigate()
 
-//   const handleLogout = ()=>{
-//     localStorage.removeItem("user");
-//   }
+//   console.log(isAuth)
+
+  const handleLogout = ()=>{
+    localStorage.removeItem('user')
+    logoutUser();
+    navigate('/auth')
+  }
 
   return (
     <>
@@ -58,7 +65,7 @@ const Navbar = () => {
                 size={'sm'} border={'1px solid black'}
                  _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} 
                  color={'white'}
-                //  onClick={handleLogout}
+                 onClick={handleLogout}
                  >
                 Logout
                 </Button>

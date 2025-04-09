@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Flex, Text, VStack, Box, Button } from '@chakra-ui/react'
 import JobDescription from './JobDescription'
+import { useNavigate } from 'react-router-dom'
 
 const Job = ({title, description,budget}) => {
+  const [isApplied, setIsApplied] = useState(false)
+  const navigate = useNavigate();
+  const handleApplication = ()=>{
+    setIsApplied(true);
+    navigate('/get-job/apply')
+  }
   return (
     <>
     <Box pe={10} py={5} w={'full'}>
@@ -30,7 +37,13 @@ const Job = ({title, description,budget}) => {
                     
                 </VStack>
                 <Flex w={'1/5'}  alignItems={'center'} justifyContent={'center'}>
-                <Button backgroundColor={'blue.400'} _hover={{shadow: 'sm'}}>Apply</Button>
+                <Button 
+                backgroundColor={'blue.400'} 
+                _hover={{shadow: 'sm'}}
+                onClick={handleApplication}
+                >
+                  {isApplied ? "Applied" : "Apply"}
+                </Button>
                 </Flex>
     </Flex>
     </Box>

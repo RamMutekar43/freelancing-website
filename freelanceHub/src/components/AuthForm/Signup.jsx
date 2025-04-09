@@ -3,6 +3,7 @@ import { Alert, Box, Button, Input } from '@chakra-ui/react'
 import { InputGroup } from '../ui/input-group'
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
+import useAuthStore from '../../Store/authStore'
 
 
 
@@ -14,15 +15,21 @@ const Signup = () => {
         password:'',
 
     })
+
+    const loginUser = useAuthStore(state => state.login)
+    const isAuth = useAuthStore(state => state.user)
     
     const [showPassword, setShowPassword] = useState(false)
     const [isUser, setIsUser] = useState(false);
     const navigate = useNavigate()
 
-    // const handleSignup = ()=>{
-    //  localStorage.setItem("user",!isUser)
-    //  navigate('/')
-    // }
+    const handleSignup = ()=>{
+      localStorage.setItem("user",JSON.stringify(inputs));
+     console.log(localStorage.getItem("user"))
+     loginUser(inputs)
+     navigate('/')
+     
+    }
     
 
   return (
@@ -68,7 +75,7 @@ const Signup = () => {
     />
     </InputGroup>
     <Button bg={"blue.500"} w={"full"} fontSize={"sm"} 
-    // onClick={handleSignup}
+    onClick={handleSignup}
     >Sign up</Button>
     </>
   )

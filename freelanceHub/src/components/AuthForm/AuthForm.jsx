@@ -14,9 +14,10 @@ const AuthForm = () => {
     <>
     <Box border={"1px solid gray"} p={5} borderRadius={4}>
       <VStack spaceY={4}>
-      <Image src='' 
+      {/* <Image src='' 
       // h={200} 
-      alt='Logo'/>
+      alt='Logo'/> */}
+      <>FreelanceHub</>
         {/* <Box><h1>FreelanceHub</h1></Box> */}
 
         {isLogin ?  <Login/> : <Signup/>}

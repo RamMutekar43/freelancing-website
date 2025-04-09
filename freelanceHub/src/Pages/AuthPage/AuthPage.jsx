@@ -1,10 +1,14 @@
 import { Box, Container, Flex, Image, VStack} from '@chakra-ui/react'
 import React from 'react'
 import AuthForm from '../../components/AuthForm/AuthForm'
+import useAuthStore from '../../Store/authStore'
 
 const AuthPage = () => {
+    const isAuth = useAuthStore(state => state.user)
+
   return (
     <>
+    
     <Flex alignItems={"center"} justifyContent={"center"} minH={"90vh"} p={4} color={"white"} backgroundColor={'black'}>
         <Container minW={"container.md"} p={0} >
             <Flex alignItems={"center"} justifyContent={"center"} >
@@ -21,6 +25,7 @@ const AuthPage = () => {
             </Flex>
         </Container>
     </Flex>
+   
     </>
   )
 }
