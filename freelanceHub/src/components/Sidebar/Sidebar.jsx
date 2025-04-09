@@ -13,11 +13,11 @@ const Sidebar = () => {
   const logoutUser = useAuthStore(state => state.logoutUser)
   const Navigate = useNavigate()
 
-  const handleLogout = ()=>{
-    localStorage.removeItem('user')
-    logoutUser();
-    Navigate('/auth')
-  }
+  // const handleLogout = ()=>{
+  //   localStorage.removeItem('user')
+  //   logoutUser();
+  //   Navigate('/auth')
+  // }
 
   return (
     <>
@@ -70,7 +70,7 @@ const Sidebar = () => {
 				>
 					<BiLogOut size={25} />
 					<Button
-          onClick={handleLogout}
+          // onClick={handleLogout}
           color={'black'}
 					display={{ base: "none", md: "block" }}
 					variant={"ghost"}

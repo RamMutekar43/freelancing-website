@@ -7,7 +7,7 @@ import { Toaster } from '../ui/toaster'
 
 
 const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(true)
+  const [isLogin, setIsLogin] = useState(false)
 
  
   return (
