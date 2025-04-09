@@ -5,11 +5,12 @@ import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Footer from '../../components/Footer/Footer';
+import useAuthStore from '../../Store/authStore';
 
 
 const PageLayout = ({children}) => {
     const [isMenu, setIsMenu] = useState(false);
-    const [isAuth, setIsAuth] = useState(true);
+    const isAuth = useAuthStore(state => state.user)
     
     
     return (
@@ -23,7 +24,7 @@ const PageLayout = ({children}) => {
 
         <Flex>
             {/* left  sidebar */}
-            {/* {isAuth ? (
+            {isAuth ? (
             <>
             <VStack gap={0}>
             <Flex w={'full'}  h={'10vh'} px={3} alignItems={'center'}>
@@ -44,7 +45,7 @@ const PageLayout = ({children}) => {
             ) : null}
             </VStack>
             </>
-            ) : null} */}
+            ) : null}
 
     
             {/* right side conntent */}

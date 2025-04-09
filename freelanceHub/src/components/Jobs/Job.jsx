@@ -2,14 +2,23 @@ import React, { useState } from 'react'
 import { Flex, Text, VStack, Box, Button } from '@chakra-ui/react'
 import JobDescription from './JobDescription'
 import { useNavigate } from 'react-router-dom'
+import useAuthStore from '../../Store/authStore'
 
-const Job = ({title, description,budget}) => {
+const Job = ({title, description,budget, key}) => {
   const [isApplied, setIsApplied] = useState(false)
   const navigate = useNavigate();
+  const isAuth = useAuthStore(state => state.user)
+
   const handleApplication = ()=>{
+    if(!isAuth){
+      navigate('/auth')
+    }
+    else{
     setIsApplied(true);
     navigate('/get-job/apply')
+    }
   }
+
   return (
     <>
     <Box pe={10} py={5} w={'full'}>
