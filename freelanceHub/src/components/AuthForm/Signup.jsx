@@ -1,9 +1,12 @@
 import React, {use, useState} from 'react'
-import { Alert, Box, Button, Input } from '@chakra-ui/react' 
+import { Alert, Box, Button, Input, Toaster } from '@chakra-ui/react' 
 import { InputGroup } from '../ui/input-group'
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '../../Store/authStore'
+import { toaster } from '../ui/toaster'
+import useShowToast from '../../Hooks/useShowToast'
+
 
 
 
@@ -16,6 +19,8 @@ const Signup = () => {
 
     })
 
+    const showToast = useShowToast()
+
     const loginUser = useAuthStore(state => state.login)
     const isAuth = useAuthStore(state => state.user)
     
@@ -24,10 +29,16 @@ const Signup = () => {
     const navigate = useNavigate()
 
     const handleSignup = ()=>{
+
+     if(!inputs.username && !inputs.email && !inputs.email && !inputs.password && !inputs.fullname){
+      showToast( 'Error',"Please fill all the fields.", 'error')
+     }
+     else{
       localStorage.setItem("user",JSON.stringify(inputs));
-     console.log(localStorage.getItem("user"))
-     loginUser(inputs)
-     navigate('/')
+      loginUser(inputs)
+      navigate('/')
+     }
+    
      
     }
     
@@ -77,6 +88,8 @@ const Signup = () => {
     <Button bg={"blue.500"} w={"full"} fontSize={"sm"} 
     onClick={handleSignup}
     >Sign up</Button>
+    
+    {/* <Toaster/> */}
     </>
   )
 }

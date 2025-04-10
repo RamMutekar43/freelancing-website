@@ -8,6 +8,7 @@ import { TfiWrite } from 'react-icons/tfi';
 import { GoGraph } from 'react-icons/go';
 import { SlEarphonesAlt } from 'react-icons/sl';
 import { FcServices } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
 
@@ -74,7 +75,13 @@ const Services = () => {
     p={4}
     >
       {services.map((e,key)=>{
-        return (<Service title={e.title} description={e.description} key={key} icon={e.icon}/>)
+        return (
+        <>
+        <Link to={'/hire-job'}>
+        <Service title={e.title} description={e.description} key={key} icon={e.icon}/>
+        </Link>
+        </>
+      )
       })}
     </Grid>
     </VStack>

@@ -2,6 +2,7 @@ import { Box, Container, Flex, Image, VStack} from '@chakra-ui/react'
 import React from 'react'
 import AuthForm from '../../components/AuthForm/AuthForm'
 import useAuthStore from '../../Store/authStore'
+// import { Toaster } from '../../components/ui/toaster'
 
 const AuthPage = () => {
     const isAuth = useAuthStore(state => state.user)
@@ -25,7 +26,7 @@ const AuthPage = () => {
             </Flex>
         </Container>
     </Flex>
-   
+    
     </>
   )
 }
