@@ -15,7 +15,8 @@ const JobApplicationForm = ({setIsApplied}) => {
         position: "",
         coverLetter: "",
         resume: null,
-        submited:false
+        submited:false,
+        workRef: ''
       });
     
       // Simple change handler
@@ -33,7 +34,7 @@ const JobApplicationForm = ({setIsApplied}) => {
         e.preventDefault();
         setFormData({ ...formData, submited:true });
         setIsApplied(true);
-        console.log("Form Data:", formData);
+        console.log("Form Data:", formData.workRef);
 
         if(formData.submited){
             Navigate('/get-job')
@@ -41,7 +42,7 @@ const JobApplicationForm = ({setIsApplied}) => {
       };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className=''>
           <Fieldset.Root size="lg" maxW="lg" mx="auto" p="6" boxShadow="md" borderRadius="xl">
             <VStack spacing="6">
               <VStack spacing="2">
@@ -99,15 +100,19 @@ const JobApplicationForm = ({setIsApplied}) => {
                 <Field.Root>
                   <Field.Label>Country</Field.Label>
                   <NativeSelect.Root>
-                    <NativeSelect.Field
+                    <NativeSelect.Field 
+                      
                       name="country"
                       value={formData.country}
                       onChange={handleChange}
                       required
                     >
-                      <option value="" >Select your country</option>
+                      <option value=""
+                      className=' text-black bg-white'
+                      >Select your country</option>
                       {countries.map((country) => (
-                        <option key={country} value={country}>
+                        <option 
+                        key={country} value={country}>
                           {country}
                         </option>
                       ))}
@@ -125,6 +130,19 @@ const JobApplicationForm = ({setIsApplied}) => {
                     value={formData.position}
                     onChange={handleChange}
                     placeholder="Frontend Developer, UI/UX Designer, etc."
+                    isRequired
+                  />
+                </Field.Root>
+
+                {/* Sample work reference link */}
+                <Field.Root>
+                  <Field.Label>Sample Work</Field.Label>
+                  <Input
+                  background={'transparent'}
+                    name="workRef"
+                    value={formData.workRef}
+                    onChange={handleChange}
+                    placeholder="Sample work reference link..."
                     isRequired
                   />
                 </Field.Root>
