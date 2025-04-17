@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import useAuthStore from '../../Store/authStore'
 import { toaster } from '../ui/toaster'
 import useShowToast from '../../Hooks/useShowToast'
-
+import axios from 'axios'
 
 
 
 const Signup = () => {
     const [inputs, setInputs] = useState({
-        fullname:'',
+        // fullname:'',
         username:'',
         email:'',
         password:'',
@@ -28,18 +28,37 @@ const Signup = () => {
     const [isUser, setIsUser] = useState(false);
     const navigate = useNavigate()
 
-    const handleSignup = ()=>{
+    const handleSignup = async ()=>{
 
-     if(!inputs.username && !inputs.email && !inputs.email && !inputs.password && !inputs.fullname){
+     if(!inputs.username && !inputs.email && !inputs.email && !inputs.password ){
       showToast( 'Error',"Please fill all the fields.", 'error')
      }
      else{
-      localStorage.setItem("user",JSON.stringify(inputs));
-      loginUser(inputs)
-      navigate('/')
-     }
+      try {
+        const res = await fetch('http://localhost:8080/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(inputs),
+        });
+
     
-     
+        if (res.ok) {
+          alert('Signup successful!');
+          console.log(res)
+          // localStorage.setItem();
+          loginUser(res)
+          navigate('/');
+        } else {
+          const errorText = await res.text(); 
+          alert(errorText || 'Signup failed!');
+        }
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+      
+     }
     }
     
 
@@ -59,12 +78,12 @@ const Signup = () => {
     onChange={(e)=>setInputs({...inputs,username:e.target.value})}
     />
 
-    <Input type='text' fontSize={14} 
+    {/* <Input type='text' fontSize={14} 
     placeholder='Full Name' 
     size={'sm'}
     value={inputs.fullname}
     onChange={(e)=>setInputs({...inputs,fullname:e.target.value})}
-    />
+    /> */}
 
     <InputGroup
     w={'full'}

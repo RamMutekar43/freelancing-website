@@ -46,11 +46,11 @@ const Navbar = () => {
                 </Link>
                 {!isAuth ? (
                     <>
-                    <Link to={"/auth"}>
+                    {/* <Link to={"/auth"}>
                     <Button backgroundColor={'blue.400'} size={'sm'} >
                     Login
                     </Button>
-                    </Link>
+                    </Link> */}
                     <Link to={"/auth"}>
                     <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
                     Signup
@@ -70,7 +70,7 @@ const Navbar = () => {
                 Logout
                 </Button>
                 </Link>
-                <Link to={""}>
+                <Link to={"/:username"}>
                 <Avatar size={'xl'}/>
                 </Link>
                 </>
