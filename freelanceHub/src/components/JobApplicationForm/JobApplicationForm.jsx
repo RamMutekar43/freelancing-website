@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const JobApplicationForm = ({setIsApplied}) => {
     const Navigate = useNavigate()
-    const countries = ["United States", "Canada", "United Kingdom", "India"];
+    // const countries = ["United States", "Canada", "United Kingdom", "India"];
 
     const [formData, setFormData] = useState({
         fullName: "",
@@ -34,15 +34,12 @@ const JobApplicationForm = ({setIsApplied}) => {
         e.preventDefault();
         setFormData({ ...formData, submited:true });
         setIsApplied(true);
-        console.log("Form Data:", formData.workRef);
-
-        if(formData.submited){
-            Navigate('/get-job')
-        }
+        Navigate('/get-job')
+        
       };
 
     return (
-        <form onSubmit={handleSubmit} className=''>
+        <VStack className=''>
           <Fieldset.Root size="lg" maxW="lg" mx="auto" p="6" boxShadow="md" borderRadius="xl">
             <VStack spacing="6">
               <VStack spacing="2">
@@ -99,26 +96,14 @@ const JobApplicationForm = ({setIsApplied}) => {
                 {/* Country */}
                 <Field.Root>
                   <Field.Label>Country</Field.Label>
-                  <NativeSelect.Root>
-                    <NativeSelect.Field 
-                      
-                      name="country"
-                      value={formData.country}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value=""
-                      className=' text-black bg-white'
-                      >Select your country</option>
-                      {countries.map((country) => (
-                        <option 
-                        key={country} value={country}>
-                          {country}
-                        </option>
-                      ))}
-                    </NativeSelect.Field>
-                    <NativeSelect.Indicator />
-                  </NativeSelect.Root>
+                  <Input
+                  background={'transparent'}
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    placeholder="Country name"
+                    isRequired
+                  />
                 </Field.Root>
     
                 {/* Position Applied For */}
@@ -173,12 +158,12 @@ const JobApplicationForm = ({setIsApplied}) => {
                 </Field.Root> */}
               </Fieldset.Content>
     
-              <Button type="submit" colorScheme="teal" alignSelf="flex-start" backgroundColor={'blue.400'}>
+              <Button type="submit" colorScheme="teal" alignSelf="flex-start" backgroundColor={'blue.400'} onClick={handleSubmit}>
                 Submit Application
               </Button>
             </VStack>
           </Fieldset.Root>
-        </form>
+        </VStack>
       );
     
 }

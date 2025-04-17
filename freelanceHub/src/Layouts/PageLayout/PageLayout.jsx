@@ -24,7 +24,7 @@ const PageLayout = ({children}) => {
 
         <Flex>
             {/* left  sidebar */}
-            {/* {isAuth ? (
+            {isAuth ? (
             <>
             <VStack gap={0}>
             <Flex w={'full'}  h={'10vh'} px={3} alignItems={'center'}>
@@ -45,7 +45,7 @@ const PageLayout = ({children}) => {
             ) : null}
             </VStack>
             </>
-            ) : null} */}
+            ) : null}
 
     
             {/* right side conntent */}
