@@ -4,7 +4,7 @@ import Freelancer from './Freelancer'
 import { LuSearch } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 
-const Freelancers = ( { selectedDomain, isFreelancers}) => {
+const Freelancers = ( { selectedDomain, freelancers}) => {
 
   return (
     <>
@@ -23,11 +23,11 @@ const Freelancers = ( { selectedDomain, isFreelancers}) => {
                         </>
                       )
                 }) : 
-                isFreelancers.map((e,key)=>{
+                freelancers.map((e,key)=>{
                     return(
                       <>
                       <Link to={`/:${e.username}`}>
-                        <Freelancer username={e.username} domain={e.domain} description={e.description} url={e.profileUrl}  key={key} rating={e.rating}/>
+                        <Freelancer username={e.username} domain={e.domain} description={e.description} url={e.profileUrl}  key={e.id} rating={e.rating}/>
                       </Link>
                       </>
                     )

@@ -1,88 +1,47 @@
-import { Box, Button, Container, Flex, Image } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Avatar } from '../ui/avatar'
-import useAuthStore from '../../Store/authStore'
+// src/components/layout/Navbar.jsx
+import React from 'react';
+import { Box, Button, Container, Flex } from '@chakra-ui/react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../Store/authSlice';
+import { useAuth } from '../../context/AuthContext'; // Use context
 
 const Navbar = () => {
-  const isAuth  = useAuthStore(state => state.user)
-  const logoutUser = useAuthStore( state => state.logout)
-  const Navigate = useNavigate()
+  const { user } = useSelector((state)=>state.auth); // Get user from Redux state
+  const { logout: logoutContext } = useAuth(); // Use context logout
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // console.log(user)
 
-//   console.log(isAuth)
-
-  const handleLogout = ()=>{
-    localStorage.removeItem('user')
-    logoutUser();
-    // Navigate('/auth')
-  }
+  const handleLogout = () => {
+    dispatch(logout()); // Dispatch logout in Redux
+    logoutContext();    // Clear token from context
+    navigate('/login');
+  };
 
   return (
-    <>
-    <Container 
-    h={'10vh'}
-    w={'full'}
-    py={4} 
-    px={0}
-    >
-        <Flex w={'full'} justifyContent={{base:'center',sm:"space-between"}} alignItems={'center'}>
-            {/* <Image src="/Logo/textLogo.png" display={{base:'none',sm:"block"}} cursor={'pointer'} w={150}/> */}
-            <Box fontWeight={"bold"}>FreelancHub</Box>
-            <Flex gap={4} alignItems={'center'}>
-                <Link to={"/"}>
-                <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm', backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
-                    Home
-                </Button>
-                </Link>
-                <Link to={"/get-job"}>
-                <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
-                    Get Job
-                </Button>
-                </Link>
-                <Link to={"/hire-job"}>
-                <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
-                    Hire Job
-                </Button>
-                </Link>
-                {!isAuth ? (
-                    <>
-                    {/* <Link to={"/auth"}>
-                    <Button backgroundColor={'blue.400'} size={'sm'} >
-                    Login
-                    </Button>
-                    </Link> */}
-                    <Link to={"/auth"}>
-                    <Button variant={'outline'} size={'sm'} border={'1px solid black'} _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} color={'white'}>
-                    Signup
-                    </Button>
-                    </Link>
-                    </>
-                ) : (
-                <>
-                <Link to={"/auth"}>
-                <Button 
-                variant={'outline'} 
-                size={'sm'} border={'1px solid black'}
-                 _hover={{background:'transparent', shadow:'sm',backgroundColor:'#DFE8E6' , color:"black"}} 
-                 color={'white'}
-                 onClick={handleLogout}
-                 >
-                Logout
-                </Button>
-                </Link>
-                <Link to={"/:username"}>
-                <Avatar size={'xl'}/>
-                </Link>
-                </>
-                )}
-
-                
-
-            </Flex>
+    <Container h="10vh" w="full" py={4} px={0}>
+      <Flex w="full" justifyContent={{ base: 'center', sm: 'space-between' }} alignItems="center">
+        <Box fontWeight="bold">FreelancHub</Box>
+        <Flex gap={4} alignItems="center">
+          <Link to="/"><Button variant="outline" size="sm">Home</Button></Link>
+          <Link to="/get-job"><Button variant="outline" size="sm">Get Job</Button></Link>
+          <Link to="/hire-job"><Button variant="outline" size="sm">Hire Job</Button></Link>
+          
+          {!user ? (
+            <>
+              <Link to="/login"><Button bg="blue.400" size="sm">Login</Button></Link>
+              <Link to="/signup"><Button variant="outline" size="sm">Signup</Button></Link>
+            </>
+          ) : (
+            <>
+              <Button variant="outline" size="sm" onClick={handleLogout}>Logout</Button>
+            </>
+          )}
         </Flex>
+      </Flex>
     </Container>
-    </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
