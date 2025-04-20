@@ -3,7 +3,7 @@ import { Alert, Box, Button, Input, Toaster } from '@chakra-ui/react'
 import { InputGroup } from '../ui/input-group'
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
-import useAuthStore from '../../Store/authStore'
+// import useAuthStore from '../../Store/authStore'
 import { toaster } from '../ui/toaster'
 import useShowToast from '../../Hooks/useShowToast'
 import axios from 'axios'
@@ -16,16 +16,12 @@ const Signup = () => {
         username:'',
         email:'',
         password:'',
-
     })
+
+    const [showPassword, setShowPassword] = useState(false)
 
     const showToast = useShowToast()
 
-    const loginUser = useAuthStore(state => state.login)
-    const isAuth = useAuthStore(state => state.user)
-    
-    const [showPassword, setShowPassword] = useState(false)
-    const [isUser, setIsUser] = useState(false);
     const navigate = useNavigate()
 
     const handleSignup = async ()=>{
@@ -42,14 +38,12 @@ const Signup = () => {
           },
           body: JSON.stringify(inputs),
         });
-
     
         if (res.ok) {
           alert('Signup successful!');
           console.log(res)
-          // localStorage.setItem();
-          loginUser(res)
-          navigate('/');
+         
+          navigate('/login');
         } else {
           const errorText = await res.text(); 
           alert(errorText || 'Signup failed!');
@@ -77,13 +71,6 @@ const Signup = () => {
     value={inputs.username}
     onChange={(e)=>setInputs({...inputs,username:e.target.value})}
     />
-
-    {/* <Input type='text' fontSize={14} 
-    placeholder='Full Name' 
-    size={'sm'}
-    value={inputs.fullname}
-    onChange={(e)=>setInputs({...inputs,fullname:e.target.value})}
-    /> */}
 
     <InputGroup
     w={'full'}
