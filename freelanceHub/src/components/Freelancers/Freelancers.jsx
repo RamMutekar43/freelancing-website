@@ -5,7 +5,7 @@ import { LuSearch } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 
 const Freelancers = ( { selectedDomain, freelancers}) => {
-  console.log(freelancers)
+  // console.log(freelancers)
 
   return (
     <>

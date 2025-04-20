@@ -9,7 +9,8 @@ import Footer from '../../components/Footer/Footer';
 
 const PageLayout = ({children}) => {
     const [isMenu, setIsMenu] = useState(false);
-    const [isAuth,setIsAuth] = useState(false)
+    const [isAuth,setIsAuth] = useState(localStorage.getItem('user'))
+    // const user = localStorage.getItem('user')
     
     
     return (
@@ -18,7 +19,7 @@ const PageLayout = ({children}) => {
         <Box 
         backgroundColor={'black'}
         w={'full'}>
-            <Navbar/>
+            <Navbar isAuth={isAuth}/>
         </Box>
 
         <Flex>
@@ -30,7 +31,8 @@ const PageLayout = ({children}) => {
             <Button  
             backgroundColor={"#DFE8E6"} 
             onClick={()=>setIsMenu(!isMenu)}
-            _hover={{cursor:'pointer',shadow:"sm"}}
+            shadow={'sm'}
+            _hover={{cursor:'pointer'}}
             py={4}
             px={2}>
                 <AiOutlineMenu color='black' size={40}/>

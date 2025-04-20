@@ -1,21 +1,30 @@
-import { Box, Flex, Image, Button} from '@chakra-ui/react'
+import { Box, Flex, Image, Button, useEditable} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { Avatar } from '../ui/avatar'
 
-import React, { useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { BiLogOut } from 'react-icons/bi'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { Tooltip } from '../ui/tooltip'
+import SidebarItems from '../SidebarItems/SidebarItems'
+import { useDispatch } from 'react-redux'
+import {logout} from '../../Store/authSlice'
 
 
 const Sidebar = () => {
   const Navigate = useNavigate()
+  const dispatch = useDispatch()
+  const user = localStorage.getItem('user')
 
-  // const handleLogout = ()=>{
-  //   localStorage.removeItem('user')
-  //   logoutUser();
-  //   Navigate('/auth')
-  // }
+  
+    const handleLogout = ()=>{
+        dispatch(logout()); // Dispatch logout in Redux
+      // logoutContext();    // Clear token from context
+      Navigate('/login');
+      window.location.reload();
+    }
+
+
 
   return (
     <>
@@ -41,7 +50,8 @@ const Sidebar = () => {
 
             {/* SidebarItems */}
         <Flex direction={"column"} gap={5} cursor={"pointer"}>
-				  {/* <SidebarItems /> */}
+				  <SidebarItems/>
+
 			  </Flex>
 
             {/* Logout */}
@@ -68,7 +78,7 @@ const Sidebar = () => {
 				>
 					<BiLogOut size={25} />
 					<Button
-          // onClick={handleLogout}
+          onClick={handleLogout}
           color={'black'}
 					display={{ base: "none", md: "block" }}
 					variant={"ghost"}

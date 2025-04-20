@@ -8,13 +8,9 @@ const Job = ({title, description,budget, key}) => {
   const navigate = useNavigate();
 
   const handleApplication = ()=>{
-    if(!isAuth){
-      navigate('/login')
-    }
-    else{
+    
     setIsApplied(true);
     navigate('/get-job/apply')
-    }
   }
 
   return (

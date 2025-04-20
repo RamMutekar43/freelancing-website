@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Store/authSlice';
 import { useAuth } from '../../context/AuthContext'; // Use context
 
-const Navbar = () => {
-  // const { user } = useSelector((state)=>state.auth); // Get user from Redux state
+const Navbar = ({isAuth}) => {
   const user = localStorage.getItem('user')
   const { logout: logoutContext } = useAuth(); // Use context logout
   const dispatch = useDispatch();
@@ -16,8 +15,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout()); // Dispatch logout in Redux
-    logoutContext();    // Clear token from context
+    // logoutContext();    // Clear token from context
     navigate('/login');
+    window.location.reload();
   };
 
   return (
@@ -26,8 +26,6 @@ const Navbar = () => {
         <Box fontWeight="bold">FreelancHub</Box>
         <Flex gap={4} alignItems="center">
           <Link to="/"><Button variant="outline" size="sm">Home</Button></Link>
-          <Link to="/get-job"><Button variant="outline" size="sm">Get Job</Button></Link>
-          <Link to="/hire-job"><Button variant="outline" size="sm">Hire Job</Button></Link>
           
           {!user ? (
             <>
@@ -36,6 +34,8 @@ const Navbar = () => {
             </>
           ) : (
             <>
+              <Link to="/get-job"><Button variant="outline" size="sm">Get Job</Button></Link>
+              <Link to="/hire-job"><Button variant="outline" size="sm">Hire Job</Button></Link>
               <Button variant="outline" size="sm" onClick={handleLogout}>Logout</Button>
             </>
           )}

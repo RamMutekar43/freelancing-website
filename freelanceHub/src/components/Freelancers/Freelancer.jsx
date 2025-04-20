@@ -29,7 +29,7 @@ const Freelancer = ({url, username, domain, description, rating}) => {
             </Box>
 
             <Box>
-            <RatingGroup.Root count={5} defaultValue={rating} size="lg"colorPalette={'yellow'} >
+            <RatingGroup.Root count={5} defaultValue={rating} size="lg" colorPalette={'yellow'} readOnly>
                 <RatingGroup.HiddenInput/>
                 <RatingGroup.Control />
             </RatingGroup.Root>
