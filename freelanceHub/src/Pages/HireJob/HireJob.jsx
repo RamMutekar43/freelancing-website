@@ -5,14 +5,16 @@ import { LuSearch } from 'react-icons/lu'
 import { useAuth } from '../../Context/AuthContext'
 
 const HireJob = () => {
-          const [isFreelancers, setIsFreelancers] = useState([]);
+          // const [isFreelancers, setIsFreelancers] = useState([]);
           const [isMenu, setIsMenu] = useState([]);
           const [selectedDomain,setSelectedDomain] = useState(""); 
           const [freelancers, setFreelancers] = useState([]);
-          const { token } = useAuth();  // Access the token from context
+          // const { token } = useAuth();  // Access the token from context
+          const token = localStorage.getItem('token')
+          // console.log(token)
 
           const [isToken, setIsToken] = useState(token);
-          console.log(isToken)
+          // console.log(isToken)
     
 
           useEffect(() => {
@@ -47,7 +49,7 @@ const HireJob = () => {
                 console.error("Error:", err);
               });
           }, [token]);  // Dependency array includes token, so the effect runs when the token changes
-          console.log(freelancers)
+          // console.log(freelancers)
 
   return (
     <>
@@ -69,7 +71,7 @@ const HireJob = () => {
           </InputGroup>
         </Box>
         
-        <Freelancers selectedDomain={selectedDomain} isFreelancers={freelancers}/>
+        <Freelancers selectedDomain={selectedDomain} freelancers={freelancers}/>
     </VStack>
     </>
   )

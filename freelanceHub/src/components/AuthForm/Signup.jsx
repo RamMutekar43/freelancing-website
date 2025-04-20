@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 // import useAuthStore from '../../Store/authStore'
 import { toaster } from '../ui/toaster'
 import useShowToast from '../../Hooks/useShowToast'
-import axios from 'axios'
 
 
 
@@ -26,7 +25,7 @@ const Signup = () => {
 
     const handleSignup = async ()=>{
 
-     if(!inputs.username && !inputs.email && !inputs.email && !inputs.password ){
+     if(!inputs.username && !inputs.email && !inputs.password ){
       showToast( 'Error',"Please fill all the fields.", 'error')
      }
      else{

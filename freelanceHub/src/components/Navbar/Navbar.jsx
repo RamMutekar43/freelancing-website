@@ -7,7 +7,8 @@ import { logout } from '../../Store/authSlice';
 import { useAuth } from '../../context/AuthContext'; // Use context
 
 const Navbar = () => {
-  const { user } = useSelector((state)=>state.auth); // Get user from Redux state
+  // const { user } = useSelector((state)=>state.auth); // Get user from Redux state
+  const user = localStorage.getItem('user')
   const { logout: logoutContext } = useAuth(); // Use context logout
   const dispatch = useDispatch();
   const navigate = useNavigate();

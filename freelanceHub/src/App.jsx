@@ -12,17 +12,19 @@ import { couch } from "globals"
 import axios from "axios"
 import { useAuth } from "./Context/AuthContext"
 import { useSelector } from "react-redux"
+import PostJob from "./Pages/PostJob/PostJob"
 
 
 
 function App() {
-  const { token } = useSelector((state)=>state.auth);
+  // const { token } = useSelector((state)=>state.auth);
+  const  token  = localStorage.getItem('token')
   // const {token} = useAuth()
 
   useEffect(()=>{
     if(token){
       localStorage.setItem("user",true)
-      console.log(token)
+      // console.log(token)
     }
   },[token])
 
@@ -37,6 +39,7 @@ function App() {
       <Route path="/get-job" element={<GetJob />} />
       <Route path="/get-job/apply" element={<JobApplication />} />
       <Route path="/hire-job" element={<HireJob />} />
+      <Route path="/post-job" element={<PostJob />} />
       <Route path="/:username" element={<FreelancerProfile />} />
     </Routes>
     </PageLayout>

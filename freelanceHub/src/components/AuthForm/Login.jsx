@@ -25,7 +25,7 @@ const Login = () => {
         const data = await res.json();
 
         // Store user in Redux and token in Context
-        dispatch(loginSuccess({ user: data, token: JSON.stringify(data.accessToken) }));
+        dispatch(loginSuccess({ user: JSON.stringify(data), token: data.accessToken}));
         login(data.accessToken); // Store token in context
         
 

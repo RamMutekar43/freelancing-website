@@ -5,6 +5,7 @@ import { LuSearch } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 
 const Freelancers = ( { selectedDomain, freelancers}) => {
+  console.log(freelancers)
 
   return (
     <>
@@ -18,7 +19,7 @@ const Freelancers = ( { selectedDomain, freelancers}) => {
                     if(e.domain.toLowerCase() == selectedDomain.toLowerCase()) return(
                         <>
                         <Link to={`/:${e.username}`}>
-                        <Freelancer username={e.username} domain={e.domain} description={e.description} url={e.profileUrl}  key={key} rating={e.rating}/>
+                        <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileUrl}  key={e.id} rating={e.rating}/>
                         </Link>
                         </>
                       )
@@ -27,7 +28,7 @@ const Freelancers = ( { selectedDomain, freelancers}) => {
                     return(
                       <>
                       <Link to={`/:${e.username}`}>
-                        <Freelancer username={e.username} domain={e.domain} description={e.description} url={e.profileUrl}  key={e.id} rating={e.rating}/>
+                        <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileUrl}  key={e.id} rating={e.rating}/>
                       </Link>
                       </>
                     )
