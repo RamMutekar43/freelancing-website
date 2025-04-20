@@ -6,8 +6,8 @@ import Signup from './Signup'
 import { Toaster } from '../ui/toaster'
 
 
-const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(false)
+const LoginForm = () => {
+//   const [isLogin, setIsLogin] = useState(false)
 
  
   return (
@@ -20,16 +20,7 @@ const AuthForm = () => {
       <>FreelanceHub</>
         {/* <Box><h1>FreelanceHub</h1></Box> */}
 
-        {isLogin ?  <Login/> : <Signup/>}
-
-        {/* ------------ OR ----------- */}
-        {/* <Flex alignItems={'center'} justifyContent={'center'} my={4} gap={1} w={'full'}>
-          <Box h={'1px'} bg={'gray.400'} flex={2}/>
-          <Text mx={1} color={'white'}> OR </Text>
-          <Box h={'1px'} bg={'gray.400'} flex={2}/>
-        </Flex> */}
-
-        {/* <GoogleAuth/> */}
+        <Login/>
 
       </VStack>
     </Box>
@@ -37,10 +28,10 @@ const AuthForm = () => {
     <Box border={'1px solid gray'} p={5} borderRadius={4}>
       <Flex alignItems={'center'} justifyContent={'center'}>
         <Box mx={4} fontSize={14}>
-          {isLogin? "Don't have an account?" : "Already have an account?"}
+          Don't have an account?
         </Box>
-        <Box onClick={()=> setIsLogin(!isLogin)} color={'blue.500'} cursor={'pointer'}>
-        {isLogin? "Sign up" : "Log in"}
+        <Box color={'blue.500'} cursor={'pointer'}>
+            Sign up
         </Box>
       </Flex>
     </Box>
@@ -50,4 +41,4 @@ const AuthForm = () => {
   )
 }
 
-export default AuthForm
+export default LoginForm
