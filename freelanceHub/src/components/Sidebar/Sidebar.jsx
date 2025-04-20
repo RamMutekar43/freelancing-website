@@ -6,11 +6,9 @@ import React, { useState } from 'react'
 import { BiLogOut } from 'react-icons/bi'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { Tooltip } from '../ui/tooltip'
-import useAuthStore from '../../Store/authStore'
 
 
 const Sidebar = () => {
-  const logoutUser = useAuthStore(state => state.logoutUser)
   const Navigate = useNavigate()
 
   // const handleLogout = ()=>{

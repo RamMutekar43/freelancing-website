@@ -5,12 +5,11 @@ import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Footer from '../../components/Footer/Footer';
-import useAuthStore from '../../Store/authStore';
 
 
 const PageLayout = ({children}) => {
     const [isMenu, setIsMenu] = useState(false);
-    const isAuth = useAuthStore(state => state.user)
+    const [isAuth,setIsAuth] = useState(false)
     
     
     return (
