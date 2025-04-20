@@ -37,7 +37,10 @@ const PostJobForm = () => {
         
             if (res.ok) {
               alert('Job Posted.');
-              console.log(res)
+              jobInputs.title=""
+              jobInputs.description=""
+              jobInputs.price=""
+            //   console.log(res)
              
               navigate('/post-job');
             } else {
