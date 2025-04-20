@@ -4,6 +4,7 @@ import Login from './Login'
 import Signup from './Signup'
 // import GoogleAuth from './GoogleAuth'
 import { Toaster } from '../ui/toaster'
+import { Link } from 'react-router-dom'
 
 
 const LoginForm = () => {
@@ -31,7 +32,7 @@ const LoginForm = () => {
           Don't have an account?
         </Box>
         <Box color={'blue.500'} cursor={'pointer'}>
-            Sign up
+          <Link to={'/signup'}>Sign up</Link>
         </Box>
       </Flex>
     </Box>

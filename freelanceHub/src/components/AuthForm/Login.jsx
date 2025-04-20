@@ -1,13 +1,16 @@
 // src/components/auth/Login.jsx
 import React, { useState } from 'react';
-import { Input, Button, useSelect } from '@chakra-ui/react';
+import { Input, Button, useSelect, Box } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginSuccess } from '../../Store/authSlice';
 import { useAuth } from '../../context/AuthContext'; // Import the context
+import { InputGroup } from '../ui/input-group'
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 const Login = () => {
   const [inputs, setInputs] = useState({ email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false)
   const { login } = useAuth();  // Access login from context
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,9 +30,8 @@ const Login = () => {
         // Store user in Redux and token in Context
         dispatch(loginSuccess({ user: JSON.stringify(data), token: data.accessToken}));
         login(data.accessToken); // Store token in context
-        
-
         navigate('/');
+        window.location.reload();
       } else {
         const err = await res.text();
         alert(err || 'Login failed');
@@ -49,14 +51,33 @@ const Login = () => {
         value={inputs.email}
         onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
       />
-      <Input
+      {/* <Input
         type="password"
         fontSize={14}
         placeholder="Password"
         size="sm"
         value={inputs.password}
         onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-      />
+      /> */}
+      <InputGroup
+          w={'full'}
+          endElement={
+              <Box h={'full'} position={'absolute'} left={-3}>
+              <Button variant={'ghost'} size={'sm'} onClick={()=>{setShowPassword(!showPassword)}} px={0} 
+              >
+                  {showPassword ? <IoMdEye/> : <IoMdEyeOff/>}
+              </Button>
+              </Box>
+          }
+          >
+          <Input type={showPassword ? 'text': 'password'}
+          fontSize={14} 
+          placeholder='Password'
+          value={inputs.password}
+          onChange={(e)=>setInputs({...inputs,password:e.target.value})}
+          size={'sm'}
+          />
+          </InputGroup>
       <Button bg="blue.500" w="full" fontSize="sm" onClick={handleLogin}>
         Log in
       </Button>

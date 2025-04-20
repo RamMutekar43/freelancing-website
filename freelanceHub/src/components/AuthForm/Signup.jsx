@@ -25,7 +25,7 @@ const Signup = () => {
 
     const handleSignup = async ()=>{
 
-     if(!inputs.username && !inputs.email && !inputs.password ){
+     if(!inputs.username && !inputs.email && !inputs.email && !inputs.password ){
       showToast( 'Error',"Please fill all the fields.", 'error')
      }
      else{

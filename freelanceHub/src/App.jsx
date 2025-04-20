@@ -8,10 +8,6 @@ import FreelancerProfile from "./Pages/FreelancerProfile/FreelancerProfile"
 import LoginPage from  './Pages/AuthPage/LoginPage'
 import SignupPage from  './Pages/AuthPage/SignupPage'
 import { useEffect, useState } from "react"
-import { couch } from "globals"
-import axios from "axios"
-import { useAuth } from "./Context/AuthContext"
-import { useSelector } from "react-redux"
 import PostJob from "./Pages/PostJob/PostJob"
 
 
