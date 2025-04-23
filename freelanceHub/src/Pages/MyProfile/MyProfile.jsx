@@ -38,19 +38,17 @@ const MyProfile = () => {
           </Flex>
           <SkeletonText noOfLines={4} gap="4" w={'full'}/>
 
-          <Flex gap={2} justifyContent={'space-between'} w={'full'}>
-          <Skeleton height={'50px'}>
+          <Flex gap={2} w={'full'}>
+          <Skeleton height={'45px'}>
             <Box>bashbjashhHSLJJa</Box>
           </Skeleton>
-          <Skeleton height={'50px'}>
+          <Skeleton height={'45px'}>
             <Box>bashbjashhHSLJJa</Box>
           </Skeleton>
-          <Skeleton height={'50px'}>
+          <Skeleton height={'45px'}>
             <Box>bashbjashhHSLJJa</Box>
           </Skeleton>
-          <Skeleton height={'50px'}>
-            <Box>bashbjashhHSLJJa</Box>
-          </Skeleton>
+          
           </Flex>
           </VStack>
           
