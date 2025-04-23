@@ -1,0 +1,83 @@
+import { Avatar, AvatarGroup, Box, Button, Flex, Grid, RatingGroup, Text, VStack } from '@chakra-ui/react'
+// import { Avatar } from '../ui/avatar'
+import React, { useState } from 'react'
+import Skills from './Skills'
+
+const Profile = ({details}) => {
+    console.log(details.skills)
+    
+    return (
+        <>
+        <Flex gap={{base:4,sm:10}} py={10} direction={{base:'column',sm:"row"}} color={'black'} backgroundColor={'pink'} w={'3/4'}>
+            <VStack>
+            <AvatarGroup  
+            mx={'auto'} 
+            justifySelf={"center"} 
+            alignSelf={"flex-start"} 
+            h={{base:'64px',sm:"100px",md:"130px"}} 
+            w={{base:'64px',sm:"100px",md:"130px"}} 
+            border={'2px solid gray'} 
+            borderRadius={'full'} size={'full'}
+            >
+                <Avatar.Root>
+                <Avatar.Image name="this is alita" src="/post1.avif" alt="this is alita" />
+                </Avatar.Root>
+            </AvatarGroup>
+
+            <Box>
+                <RatingGroup.Root count={5} defaultValue={4} size="lg" colorPalette={'yellow'} readOnly>
+                    <RatingGroup.HiddenInput/>
+                    <RatingGroup.Control />
+                </RatingGroup.Root>
+                </Box>
+            </VStack>
+    
+            <VStack alignItems={'start'} gap={2} mx={'auto'} flex={1} >
+                <Flex direction={{base:"column",sm:'row'}}
+                justifyContent={{base:"center",sm:"flex-start"}}
+                alignItems={'center'}
+                w={'full'}
+                >
+                    <Text fontSize={{base:'sm',md:'lg'}}>{details.username}</Text>
+                    <Flex gap={4} alignItems={'center'} justifyContent={'center'} ml={{base:2,sm:4}}>
+                        <Button 
+                        bg={'white'} 
+                        color={'black'} 
+                        _hover={{bg:"whiteAlpha.800"}} 
+                        size={{base:'xs',md:"sm"}}
+                        >
+                            Edit Profile
+                        </Button>
+                    </Flex>
+                </Flex>
+                
+                <Text fontSize={"sm"} >{details.bio}</Text>
+                <Flex gap={2}><Text fontSize={"sm"} fontStyle={'lg'} fontWeight={'medium'}>Domain of work:</Text>
+                <Text fontSize={"sm"} >{details.domain}</Text>
+                </Flex>
+                <Text fontSize={"sm"} >{details.experience}</Text>
+
+                <VStack>
+                <Box w={'full'}><Text fontStyle={'lg'} fontWeight={'medium'}>Tech-Stack</Text></Box>
+                <Grid
+                templateColumns={{
+                base: 'repeat(1, 1fr)',
+                md: 'repeat(4, 1fr)',
+                }}
+                gap={1}
+                columnGap={1}
+                w={'full'}
+                >
+                    {details.skills.map((e,idx)=>{
+                        return (<Skills skill={e} key={idx}/>)
+                    })}
+                </Grid>
+                </VStack>
+
+            </VStack>
+        </Flex>
+        </>
+      )
+}
+
+export default Profile
