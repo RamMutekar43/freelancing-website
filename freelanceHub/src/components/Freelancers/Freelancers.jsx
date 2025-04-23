@@ -15,8 +15,8 @@ const Freelancers = ( { selectedDomain, freelancers}) => {
       </Flex>
       <Grid templateColumns="repeat(4, 1fr)"  gap={4} p={4}>
             {
-                selectedDomain ? isFreelancers.map((e,key)=>{
-                    if(e.domain.toLowerCase() == selectedDomain.toLowerCase()) return(
+                selectedDomain ? freelancers.map((e,key)=>{
+                    if(JSON.stringify(e.domain).toLowerCase() == JSON.stringify(selectedDomain).toLowerCase()) return(
                         <>
                         <Link to={`/:${e.username}`}>
                         <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileUrl}  key={e.id} rating={e.rating}/>

@@ -9,25 +9,45 @@ import { LuSearch } from "react-icons/lu"
 
 // https://dummyjson.com/c/1d5f-d947-4923-87ed
 const GetJob = () => {
-  const [isJobs, setIsJobs] = useState([]);
-  const [isMenu, setIsMenu] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const navigate = useNavigate();
   const [selectedDomain,setSelectedDomain] = useState("");
  
 
-    const getJob = async ()=>{
-      try {
-        const response = (await fetch("https://dummyjson.com/c/1d5f-d947-4923-87ed"))
-        const data = await response.json()
-
-          setIsJobs(data.jobs);
-          setIsMenu(data.domains)
-      
-      } catch (error) {
-        console.log("ERROR! : ", error)
+const token = localStorage.getItem('token')
+const [isToken, setIsToken] = useState(token);
+        
+    
+useEffect(() => {
+  if (!isToken) {
+    console.error("No access token found");
+    return;
+  }
+  // Fetch freelancers with the access token
+  fetch("http://localhost:8080/api/jobs/getAllJobs", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,  // Use token from context in the Authorization header
+    },
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Failed to fetch freelancers");
       }
-    }
-    getJob();
+      return  res.json();
+      // console.log(d
+    })
+    .then((data) => {
+      setJobs(data);  // Update freelancers state with the fetched data
+      // console.log(data)
+    })
+    .catch((err) => {
+      console.error("Error:", err);
+    });
+}, [token]);  // Dependency array includes token, so the effect runs when the token changes
+// console.log(jobs)
+
 
 
   return (
@@ -55,19 +75,37 @@ const GetJob = () => {
         {/* Jobs */}
         <Container w={'4/5'}>
 
-          {selectedDomain ? isJobs.map((e,key)=>{
-                if(e.domain.toLowerCase() == selectedDomain.toLowerCase()) return(
+          {   selectedDomain ? jobs.map((e,key)=>{
+                if(JSON.stringify(e.jobDomain).toLowerCase() == JSON.stringify(selectedDomain).toLowerCase()) 
+                  return(
                   <>
-                  <Job title={e.title} description={e.description} budget={e.budget} key={key}/>
+                  <Job 
+                  title={e.title} 
+                  description={e.description} 
+                  price={e.price} 
+                  owner={e.postedByUsername}
+                  date={e.date}
+                  domain={e.jobDomain}
+                  key={e.jobId} 
+                  />
                   </>
                 )
               })
               
               :
-              isJobs.map((e,key)=>{
+              jobs.map((e,key)=>{
                 return(
                   <>
-                  <Job title={e.title} description={e.description} budget={e.budget} key={key}/>
+                  <Job 
+                  title={e.title} 
+                  description={e.description} 
+                  price={e.price} 
+                  owner={e.postedByUsername}
+                  date={e.date}
+                  domain={e.jobDomain}
+                  key={e.jobId}
+
+                  />
                   </>
                 )
               })

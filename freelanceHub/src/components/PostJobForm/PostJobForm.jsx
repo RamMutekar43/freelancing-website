@@ -9,6 +9,7 @@ const PostJobForm = () => {
             title:'',
             description:'',
             price:'',
+            jobDomain:'',
         })
 
 
@@ -21,7 +22,7 @@ const PostJobForm = () => {
 
         const postJob = async ()=>{
     
-         if(!jobInputs.title && !jobInputs.description && !jobInputs.price){
+         if(!jobInputs.title && !jobInputs.description && !jobInputs.price && !jobInputs.jobDomain){
           showToast( 'Error',"Please fill all the fields.", 'error')
          }
          else{
@@ -40,6 +41,7 @@ const PostJobForm = () => {
               jobInputs.title=""
               jobInputs.description=""
               jobInputs.price=""
+               jobInputs.jobDomain=""
             //   console.log(res)
              
               navigate('/post-job');
@@ -93,6 +95,17 @@ const PostJobForm = () => {
             size={'sm'}
             value={jobInputs.price}
             onChange={(e)=>setJobInputs({...jobInputs,price:e.target.value})}
+            variant={'flushed'}
+            />
+    </Box>
+    <Box w={'full'} py={5}>
+            <Text color={'black'}>Job Domain:</Text>
+            <Input type='text' fontSize={14} 
+            color={'black'} 
+            placeholder='Job Domain...' 
+            size={'sm'}
+            value={jobInputs.jobDomain}
+            onChange={(e)=>setJobInputs({...jobInputs,jobDomain:e.target.value})}
             variant={'flushed'}
             />
     </Box>

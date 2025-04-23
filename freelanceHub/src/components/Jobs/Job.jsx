@@ -3,7 +3,8 @@ import { Flex, Text, VStack, Box, Button } from '@chakra-ui/react'
 import JobDescription from './JobDescription'
 import { useNavigate } from 'react-router-dom'
 
-const Job = ({title, description,budget, key}) => {
+const Job = ({title, description,price, key, owner, date,domain}) => {
+  // console.log(date)
   const [isApplied, setIsApplied] = useState(false)
   const navigate = useNavigate();
 
@@ -18,24 +19,36 @@ const Job = ({title, description,budget, key}) => {
     <Box pe={10} py={5} w={'full'}>
     <Flex backgroundColor={'whiteAlpha.400'} w={'full'} shadow={'sm'} borderRadius={5}>
                 <VStack w={'4/5'} py={5} px={10} >
-                    <Flex color={'black'} w={'full'} gap={2} alignItems={'baseline'}>
-                    <Text textStyle={'xl'} fontWeight={'bold'}>Job Title : </Text>
+                <Flex w={'full'} justifyContent={'space-between'}> 
+                    <Flex color={'black'} gap={2} alignItems={'baseline'}>
+                    <Text textStyle={'md'} fontWeight={'bold'}>Job Title : </Text>
                     <Text>{title}</Text>
                     </Flex>
-    
+
+                    <Flex color={'black'} gap={2} alignItems={'baseline'}>
+                    <Text textStyle={'md'} fontWeight={'bold'}>Posted at : </Text>
+                    <Text>{date}</Text>
+                    </Flex>
+                </Flex>
+
                     <Box color={'black'} w={'full'} h={'20vh'} >
-                    <Text textStyle={'xl'} fontWeight={'bold'}>Job Description : </Text>
+                    <Text textStyle={'md'} fontWeight={'bold'}>Job Description : </Text>
                     <Box overflowY={'hidden'} w={'full'} h={'10vh'}>
                     <Text>
                         {description}
                     </Text>
                     </Box>
-                    <JobDescription/>
+                    {/* <JobDescription/> */}
                     </Box>
 
                     <Flex color={'black'} w={'full'} gap={2} alignItems={'baseline'}>
-                    <Text textStyle={'xl'} fontWeight={'bold'}>Budget : </Text>
-                    <Text>{budget}</Text>
+                    <Text textStyle={'md'} fontWeight={'bold'}>Budget : </Text>
+                    <Text>{price}</Text>
+                    </Flex>
+
+                    <Flex color={'black'} w={'full'} gap={2} alignItems={'baseline'}>
+                    <Text textStyle={'md'} fontWeight={'bold'}>Owner : </Text>
+                    <Text>{owner}</Text>
                     </Flex>
                     
                 </VStack>

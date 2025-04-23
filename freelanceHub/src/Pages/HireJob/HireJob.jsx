@@ -5,20 +5,15 @@ import { LuSearch } from 'react-icons/lu'
 import { useAuth } from '../../Context/AuthContext'
 
 const HireJob = () => {
-          // const [isFreelancers, setIsFreelancers] = useState([]);
-          const [isMenu, setIsMenu] = useState([]);
           const [selectedDomain,setSelectedDomain] = useState(""); 
           const [freelancers, setFreelancers] = useState([]);
-          // const { token } = useAuth();  // Access the token from context
           const token = localStorage.getItem('token')
           // console.log(token)
 
           const [isToken, setIsToken] = useState(token);
-          // console.log(isToken)
     
 
           useEffect(() => {
-            // console.log(isToken)
             if (!isToken) {
               console.error("No access token found");
               return;

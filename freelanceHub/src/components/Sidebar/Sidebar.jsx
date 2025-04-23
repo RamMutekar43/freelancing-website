@@ -33,7 +33,7 @@ const Sidebar = () => {
     height={'100vh'}
     borderRight={"1px solid"}
     borderColor={"whiteAlpha.300"}
-    p={8}
+    py={2}
     position={'sticky'}
     top={0}
     left={0}
@@ -42,16 +42,9 @@ const Sidebar = () => {
     >
 
     <Flex direction={"column"} gap={10} width={'full'} height={'full'}>
-        <Link top={"/"} as={RouterLink} pl={2}  cursor={"pointer"} display={{base:'none',md:'block'}}>
-          {/* <Image src='/Logo/textLogo.png' w={150} /> */}
-          {/* <Avatar/> */}
-        </Link>
-
-
             {/* SidebarItems */}
         <Flex direction={"column"} gap={5} cursor={"pointer"}>
 				  <SidebarItems/>
-
 			  </Flex>
 
             {/* Logout */}
