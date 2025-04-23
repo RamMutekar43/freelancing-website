@@ -1,14 +1,20 @@
 import { Avatar, AvatarGroup, Box, Button, Flex, Grid, RatingGroup, Text, VStack } from '@chakra-ui/react'
 // import { Avatar } from '../ui/avatar'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Skills from './Skills'
+import EditProfile from './EditProfile'
+import { useNavigate } from 'react-router-dom'
+
+import { Skeleton } from '../ui/skeleton';
 
 const Profile = ({details}) => {
-    console.log(details.skills)
+    // console.log(details)
+    const [updated, setUpdated] = useState(false)
     
     return (
         <>
-        <Flex gap={{base:4,sm:10}} py={10} direction={{base:'column',sm:"row"}} color={'black'} backgroundColor={'pink'} w={'3/4'}>
+
+        <Flex gap={{base:4,sm:10}} py={10} direction={{base:'column',sm:"row"}} color={'black'} w={'3/4'}>
             <VStack>
             <AvatarGroup  
             mx={'auto'} 
@@ -25,7 +31,7 @@ const Profile = ({details}) => {
             </AvatarGroup>
 
             <Box>
-                <RatingGroup.Root count={5} defaultValue={4} size="lg" colorPalette={'yellow'} readOnly>
+                <RatingGroup.Root count={5} defaultValue={Math.floor(details.userRatings)} size="lg" colorPalette={'yellow'} readOnly>
                     <RatingGroup.HiddenInput/>
                     <RatingGroup.Control />
                 </RatingGroup.Root>
@@ -39,15 +45,16 @@ const Profile = ({details}) => {
                 w={'full'}
                 >
                     <Text fontSize={{base:'sm',md:'lg'}}>{details.username}</Text>
-                    <Flex gap={4} alignItems={'center'} justifyContent={'center'} ml={{base:2,sm:4}}>
-                        <Button 
+                    <Flex gap={4} alignItems={'center'} justifyContent={'center'} ml={{base:2,sm:4}} >
+                        {/* <Button 
                         bg={'white'} 
                         color={'black'} 
                         _hover={{bg:"whiteAlpha.800"}} 
                         size={{base:'xs',md:"sm"}}
                         >
                             Edit Profile
-                        </Button>
+                        </Button> */}
+                        <EditProfile details={details}/>
                     </Flex>
                 </Flex>
                 

@@ -16,6 +16,7 @@ import MyProfile from "./Pages/MyProfile/MyProfile"
 function App() {
   // const { token } = useSelector((state)=>state.auth);
   const token = localStorage.getItem('token')
+  const user = localStorage.getItem('user')
   const [isToken, setIsToken] = useState(token);
           
       
@@ -45,7 +46,7 @@ function App() {
       .catch((err) => {
         console.error("Error:", err);
       });
-  }, [token]);  // Dependency array includes token, so the effect runs when the token changes
+  }, [token, user]);  // Dependency array includes token, so the effect runs when the token changes
   // console.log(jobs)
 
 
