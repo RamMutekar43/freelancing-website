@@ -9,20 +9,44 @@ import LoginPage from  './Pages/AuthPage/LoginPage'
 import SignupPage from  './Pages/AuthPage/SignupPage'
 import { useEffect, useState } from "react"
 import PostJob from "./Pages/PostJob/PostJob"
+import MyProfile from "./Pages/MyProfile/MyProfile"
 
 
 
 function App() {
   // const { token } = useSelector((state)=>state.auth);
-  const  token  = localStorage.getItem('token')
-  // const {token} = useAuth()
-
-  useEffect(()=>{
-    if(token){
-      localStorage.setItem("user",true)
-      // console.log(token)
+  const token = localStorage.getItem('token')
+  const [isToken, setIsToken] = useState(token);
+          
+      
+  useEffect(() => {
+    if (!isToken) {
+      console.error("No access token found");
+      return;
     }
-  },[token])
+    // Fetch freelancers with the access token
+    fetch("http://localhost:8080/api/users/getCurrentUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,  // Use token from context in the Authorization header
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch freelancers");
+        }
+        return  res.json();
+      })
+      .then((data) => {
+        localStorage.setItem('user', JSON.stringify(data))
+        // console.log(data)
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
+  }, [token]);  // Dependency array includes token, so the effect runs when the token changes
+  // console.log(jobs)
 
 
   return (
@@ -36,6 +60,7 @@ function App() {
       <Route path="/get-job/apply" element={<JobApplication />} />
       <Route path="/hire-job" element={<HireJob />} />
       <Route path="/post-job" element={<PostJob />} />
+      <Route path="/profile" element={<MyProfile />} />
       <Route path="/:username" element={<FreelancerProfile />} />
     </Routes>
     </PageLayout>
