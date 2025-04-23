@@ -30,7 +30,7 @@ const MyProfile = () => {
           <VStack w={'1/2'}>
           <Flex w={'full'} gap={5} alignItems={'center'} pb={3}>
           <Skeleton height={'20px'}>
-            <Box>{currentUser.username}</Box>
+            <Box>jajdasjhddjashdj</Box>
           </Skeleton>
           <Skeleton height={'50px'}>
             <Box>bashbjashxsajkajs</Box>
