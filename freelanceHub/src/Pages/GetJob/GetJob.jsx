@@ -67,7 +67,6 @@ useEffect(() => {
               borderColor={'blue.200'} 
               borderRadius={'full'}
               outlineColor={'blue.400'}
-              
               />
           </InputGroup>
         </Box>
@@ -86,7 +85,8 @@ useEffect(() => {
                   owner={e.postedByUsername}
                   date={e.date}
                   domain={e.jobDomain}
-                  key={e.jobId} 
+                  key={e.jobId}
+                  postedBy = {e.postedById}
                   />
                   </>
                 )
@@ -94,6 +94,7 @@ useEffect(() => {
               
               :
               jobs.map((e,key)=>{
+                // console.log(JSON.stringify(e.postedById))
                 return(
                   <>
                   <Job 
@@ -104,7 +105,7 @@ useEffect(() => {
                   date={e.date}
                   domain={e.jobDomain}
                   key={e.jobId}
-
+                  postedBy = {JSON.stringify(e.postedById)}
                   />
                   </>
                 )

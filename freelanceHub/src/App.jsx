@@ -10,6 +10,7 @@ import SignupPage from  './Pages/AuthPage/SignupPage'
 import { useEffect, useState } from "react"
 import PostJob from "./Pages/PostJob/PostJob"
 import MyProfile from "./Pages/MyProfile/MyProfile"
+import MyPosts from "./Pages/MyPosts/MyPosts"
 
 
 
@@ -62,6 +63,7 @@ function App() {
       <Route path="/hire-job" element={<HireJob />} />
       <Route path="/post-job" element={<PostJob />} />
       <Route path="/profile" element={<MyProfile />} />
+      <Route path="/my-posts" element={<MyPosts />} />
       <Route path="/:username" element={<FreelancerProfile />} />
     </Routes>
     </PageLayout>

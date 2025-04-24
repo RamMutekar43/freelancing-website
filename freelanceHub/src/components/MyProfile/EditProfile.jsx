@@ -14,7 +14,8 @@ const EditProfile = ({ details }) => {
   });
 
   const token = localStorage.getItem('token'); // Get the token from localStorage
-//   console.log("Token:", token);
+  const [file, setFile] = useState(null);
+  // console.log("details", details);
 const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -25,7 +26,13 @@ const navigate = useNavigate()
     }));
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleSave = async () => {
+    const formData = new FormData();
+    formData.append("image", file);
     try {
       const response = await fetch('http://localhost:8080/api/users/updateProfile', {
         method: 'PUT',
@@ -40,15 +47,31 @@ const navigate = useNavigate()
         throw new Error('Failed to update profile');
       }
 
-      const data = await response.json();
-      console.log("Profile updated:", data);
+      // const data = await response.json();
+      // console.log("Profile updated:", data);
+
+      const responseImg = await fetch("http://localhost:8080/api/users/uploadProfileImage", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      if (!responseImg.ok) throw new Error("Upload failed");
+
+      const profiledata = await responseImg.json();
+      console.log("Upload success:", profiledata);
       alert("Profile is Updated.")
       // navigate('/profile')
-      window.location.reload();
+      // window.location.reload();
+
     } catch (error) {
       console.error("Error updating profile:", error);
     }
   };
+
+
 
   return (
     <Box py={2}>
@@ -165,6 +188,21 @@ const navigate = useNavigate()
                       value={inputs.githubLink}
                       onChange={handleChange}
                       placeholder='GitHub profile URL...'
+                      size={'sm'}
+                      color={'black'}
+                      variant={'flushed'}
+                      fontSize={14}
+                    />
+                  </Flex>
+
+                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
+                    <Text color={'black'}>Profile Image:</Text>
+                    <Input
+                      name="profileImage"
+                      type='file'
+                      // value={inputs.githubLink}
+                      onChange={handleFileChange}
+                      // placeholder='GitHub profile URL...'
                       size={'sm'}
                       color={'black'}
                       variant={'flushed'}
