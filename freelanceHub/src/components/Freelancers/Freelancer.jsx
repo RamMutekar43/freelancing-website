@@ -4,7 +4,7 @@ import { CgArrowLongRight } from 'react-icons/cg'
 import { Avatar } from '../ui/avatar'
 
 const Freelancer = ({url, username, domain, description, ratings}) => {
-  console.log(ratings)
+  // console.log(ratings)
   return (
     <>
     <VStack 
