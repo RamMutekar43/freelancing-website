@@ -3,16 +3,19 @@ import {
   Flex, Text, VStack, Box, Button, Dialog, Portal, Input, CloseButton,
   Container, Fieldset, Field, Textarea
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import GetApplications from '../JobApplicationForm/GetApplications';
 
 const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }) => {
   const [isApplied, setIsApplied] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem('user'));
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  const {pathname} = useLocation()
 
-  // console.log("current",currentUser.id)
-  // console.log(postedBy)
+  const showApplication = pathname == "/my-posts";
+  // console.log(jobId)
+
 
   const [formData, setFormData] = useState({
     name: currentUser?.username || '',
@@ -43,7 +46,7 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
 
       if (res.ok) {
         alert('Applied successfully.');
-        setIsApplied(true);
+        // setIsApplied(true);
         navigate('/get-job');
       } else {
         const errorText = await res.text();
@@ -88,8 +91,43 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
           </Flex>
         </VStack>
 
-        <Flex w="1/5" alignItems="center" justifyContent="center">
-          {(JSON.stringify(currentUser.id) !== JSON.stringify(postedBy)) && (
+        {
+          showApplication ? (
+            <>
+            <Flex w="1/5" alignItems="center" justifyContent="center">
+            <Dialog.Root size="cover" placement="center">
+              
+              <Dialog.Trigger asChild>
+                <Button
+                  backgroundColor="blue.400"
+                  _hover={{ shadow: 'sm' }}
+                >
+                 Applications
+                </Button>
+              </Dialog.Trigger>
+
+              <Portal>
+                <Dialog.Backdrop />
+                <Dialog.Positioner>
+                  <Dialog.Content>
+                    <Dialog.Body>
+                      <GetApplications jobId={JSON.stringify(jobId)}/>
+                    </Dialog.Body>
+                    <Dialog.CloseTrigger asChild>
+                      <CloseButton size="sm" />
+                    </Dialog.CloseTrigger>
+                  </Dialog.Content>
+                </Dialog.Positioner>
+              </Portal>
+            </Dialog.Root>
+            </Flex>
+            </>
+          ):
+          (
+            <>
+            <Flex w="1/5" alignItems="center" justifyContent="center">
+          {
+          (currentUser.id !== JSON.parse(postedBy)) ? (
             <Dialog.Root size="lg" placement="center">
               
               <Dialog.Trigger asChild>
@@ -201,8 +239,12 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
                 </Dialog.Positioner>
               </Portal>
             </Dialog.Root>
-          )}
-        </Flex>
+          ) : null
+          }
+            </Flex>
+            </>
+          )
+        }
       </Flex>
     </Box>
   );

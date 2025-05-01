@@ -1,0 +1,78 @@
+import { Box, Button, Flex, Text, VStack } from '@chakra-ui/react'
+import React, { useState } from 'react'
+
+const Application = ({ application }) => {
+  const token = localStorage.getItem('token')
+  const [isToken, setIsToken] = useState(token)
+//   console.log(application)
+  const applicationId = application.applicantId
+
+  const updateStatus = async (status) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/jobApplications/updateStatus/${applicationId}?value=${JSON.stringify(status)}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to update status')
+      }
+
+      const data = await response.json()
+      console.log('Status updated:', data)
+      // Optionally update local UI state here if needed
+
+    } catch (error) {
+      console.error('Error updating status:', error)
+    }
+  }
+
+  return (
+    <Box pe={10} py={5} w="3/4">
+      <Flex backgroundColor="whiteAlpha.400" w="full" shadow="sm" borderRadius={5}>
+        <VStack w="full" py={5} px={10}>
+          <Flex w="full" justifyContent="space-between">
+            <Flex color="black" gap={2} alignItems="baseline" w={'1/2'}>
+              <Text fontWeight="bold">Applicant:</Text>
+              <Text>{application.applicantUsername}</Text>
+            </Flex>
+            <Flex color="black" gap={2} alignItems="baseline" w={'1/2'}>
+              <Text fontWeight="bold">Domain:</Text>
+              <Text>{application.domain}</Text>
+            </Flex>
+          </Flex>
+
+          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+            <Text fontWeight="bold">Bid Price:</Text>
+            <Text>{application.bidPrice}</Text>
+          </Flex>
+          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+            <Text fontWeight="bold">Experience:</Text>
+            <Text>{application.experience}</Text>
+          </Flex>
+          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+            <Text fontWeight="bold">Reference Work:</Text>
+            <a href={application.githubLink} target="_blank" rel="noopener noreferrer">{application.githubLink}</a>
+          </Flex>
+          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+            <Text fontWeight="bold">Cover Letter:</Text>
+            <Text>{application.coverLetter}</Text>
+          </Flex>
+          <Flex color="black" gap={5} alignItems="baseline" w={'full'} justifyContent={'center'}>
+            <Button backgroundColor={'green.400'} _hover={{ shadow: 'sm' }} onClick={() => updateStatus("ACCEPTED")}>
+              Accept
+            </Button>
+            <Button backgroundColor={'red.400'} _hover={{ shadow: 'sm' }} onClick={() => updateStatus("REJECTED")}>
+              Reject
+            </Button>
+          </Flex>
+        </VStack>
+      </Flex>
+    </Box>
+  )
+}
+
+export default Application

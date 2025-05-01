@@ -53,9 +53,10 @@ useEffect(() => {
 
           {   
               jobs.map((e,key)=>{
-                console.log("Postedby",JSON.stringify(e.postedById))
-                console.log("Currennt",JSON.stringify(currentUser.id))
+                // console.log(e.jobId)
+                
                 if(JSON.stringify(currentUser.id) == JSON.stringify(e.postedById)){
+    
                     return(
                         <>
                         <Job 
@@ -66,6 +67,7 @@ useEffect(() => {
                         date={e.date}
                         domain={e.jobDomain}
                         key={e.jobId}
+                        jobId={e.jobId}
                         postedBy = {JSON.stringify(e.postedById)}
                         />
                         </>
