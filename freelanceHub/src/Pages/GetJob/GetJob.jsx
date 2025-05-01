@@ -94,7 +94,7 @@ useEffect(() => {
               
               :
               jobs.map((e,key)=>{
-                // console.log(JSON.stringify(e.postedById))
+                // console.log(e.jobId)
                 return(
                   <>
                   <Job 
@@ -104,7 +104,7 @@ useEffect(() => {
                   owner={e.postedByUsername}
                   date={e.date}
                   domain={e.jobDomain}
-                  key={e.jobId}
+                  jobId={e.jobId}
                   postedBy = {JSON.stringify(e.postedById)}
                   />
                   </>

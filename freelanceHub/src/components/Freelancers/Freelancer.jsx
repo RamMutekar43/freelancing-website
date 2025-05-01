@@ -3,7 +3,8 @@ import React from 'react'
 import { CgArrowLongRight } from 'react-icons/cg'
 import { Avatar } from '../ui/avatar'
 
-const Freelancer = ({url, username, domain, description, rating}) => {
+const Freelancer = ({url, username, domain, description, ratings}) => {
+  console.log(ratings)
   return (
     <>
     <VStack 
@@ -29,7 +30,7 @@ const Freelancer = ({url, username, domain, description, rating}) => {
             </Box>
 
             <Box>
-            <RatingGroup.Root count={5} defaultValue={rating} size="lg" colorPalette={'yellow'} readOnly>
+            <RatingGroup.Root count={5} defaultValue={Math.floor(ratings)} size="lg" colorPalette={'yellow'} readOnly>
                 <RatingGroup.HiddenInput/>
                 <RatingGroup.Control />
             </RatingGroup.Root>

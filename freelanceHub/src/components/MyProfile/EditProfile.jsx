@@ -63,8 +63,8 @@ const navigate = useNavigate()
       const profiledata = await responseImg.json();
       console.log("Upload success:", profiledata);
       alert("Profile is Updated.")
-      // navigate('/profile')
-      // window.location.reload();
+      navigate('/profile')
+      window.location.reload();
 
     } catch (error) {
       console.error("Error updating profile:", error);

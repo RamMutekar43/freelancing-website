@@ -25,6 +25,7 @@ const WebInfo = () => {
       textStyle={'7xl'}
       fontWeight={'extrabold'}
       textAlign={'end'}
+      // color={'orange.600'}
       // pe={14}
       >
       Where Talent <br/>Meets <br/>Opportunity
