@@ -75,6 +75,8 @@ useEffect(() => {
         <Container w={'4/5'}>
 
           {   selectedDomain ? jobs.map((e,key)=>{
+            // console.log(JSON.stringify(e.jobDomain.toLowerCase()))
+            // console.log(selectedDomain)
                 if(JSON.stringify(e.jobDomain).toLowerCase() == JSON.stringify(selectedDomain).toLowerCase()) 
                   return(
                   <>
@@ -86,7 +88,7 @@ useEffect(() => {
                   date={e.date}
                   domain={e.jobDomain}
                   key={e.jobId}
-                  postedBy = {e.postedById}
+                  postedBy = {JSON.stringify(e.postedById)}
                   />
                   </>
                 )
@@ -94,7 +96,7 @@ useEffect(() => {
               
               :
               jobs.map((e,key)=>{
-                // console.log(e.jobId)
+                // console.log(e.jobDomain)
                 return(
                   <>
                   <Job 

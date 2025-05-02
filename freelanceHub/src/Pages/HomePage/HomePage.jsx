@@ -4,6 +4,7 @@ import React from 'react'
 import Services from '../../components/Services/Services'
 import { Box } from '@chakra-ui/react'
 import ClientReviews from '../../components/ClientReviews/ClientReviews'
+import Footer from '../../components/Footer/Footer'
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
     <WebInfo/>
     <Services/>
     <ClientReviews/>
+    <Footer/>
     </Box>
     </>
   )

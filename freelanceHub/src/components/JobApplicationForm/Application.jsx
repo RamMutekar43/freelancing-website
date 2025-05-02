@@ -4,12 +4,14 @@ import React, { useState } from 'react'
 const Application = ({ application }) => {
   const token = localStorage.getItem('token')
   const [isToken, setIsToken] = useState(token)
-//   console.log(application)
-  const applicationId = application.applicantId
+  const [status, setStatus] = useState(application.status)  // <-- Added state for application status
 
-  const updateStatus = async (status) => {
+  const applicationId = application.jobApplicationId;
+
+  const updateStatus = async (newStatus) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/jobApplications/updateStatus/${applicationId}?value=${JSON.stringify(status)}`, {
+      // Send the PATCH request to update status
+      const response = await fetch(`http://localhost:8080/api/jobApplications/updateStatus/${applicationId}?value=${newStatus}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -21,9 +23,12 @@ const Application = ({ application }) => {
         throw new Error('Failed to update status')
       }
 
+      // Parse JSON and handle the response
       const data = await response.json()
-      console.log('Status updated:', data)
-      // Optionally update local UI state here if needed
+      console.log('Status updated:', data.message)
+
+      // Update the local state to reflect the new status
+      setStatus(newStatus)  // <-- Update the local status state
 
     } catch (error) {
       console.error('Error updating status:', error)
@@ -61,14 +66,24 @@ const Application = ({ application }) => {
             <Text fontWeight="bold">Cover Letter:</Text>
             <Text>{application.coverLetter}</Text>
           </Flex>
-          <Flex color="black" gap={5} alignItems="baseline" w={'full'} justifyContent={'center'}>
-            <Button backgroundColor={'green.400'} _hover={{ shadow: 'sm' }} onClick={() => updateStatus("ACCEPTED")}>
-              Accept
-            </Button>
-            <Button backgroundColor={'red.400'} _hover={{ shadow: 'sm' }} onClick={() => updateStatus("REJECTED")}>
-              Reject
-            </Button>
+
+          {/* Show status */}
+          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+            <Text fontWeight="bold">Current Status:</Text>
+            <Text>{status}</Text>  {/* Display the current status */}
           </Flex>
+
+          {/* Show buttons based on status */}
+          {status === 'PENDING' && (
+            <Flex color="black" gap={5} alignItems="baseline" w={'full'} justifyContent={'center'}>
+              <Button backgroundColor={'green.400'} _hover={{ shadow: 'sm' }} onClick={() => updateStatus("ACCEPTED")}>
+                Accept
+              </Button>
+              <Button backgroundColor={'red.400'} _hover={{ shadow: 'sm' }} onClick={() => updateStatus("REJECTED")}>
+                Reject
+              </Button>
+            </Flex>
+          )}
         </VStack>
       </Flex>
     </Box>
