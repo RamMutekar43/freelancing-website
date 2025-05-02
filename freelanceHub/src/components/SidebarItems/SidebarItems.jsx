@@ -8,7 +8,7 @@ const SidebarItems = () => {
         { title: "Profile", route: "/profile" },
         { title: "Post Job", route: "/post-job" },
         { title: "My Posts", route: "/my-posts" },
-        { title: "Notifications", route: "/notifications" }
+        // { title: "Notifications", route: "/notifications" }
       ];
       
 

@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom';
 
 const Freelancers = ( { selectedDomain, freelancers}) => {
   // console.log(freelancers)
+  const setFreelancer = (e)=>{
+    // console.log(e)
+    localStorage.removeItem("freelancerProfile")
+    localStorage.setItem("freelancerProfile",JSON.stringify(e))
+  }
 
   return (
     <>
@@ -28,7 +33,7 @@ const Freelancers = ( { selectedDomain, freelancers}) => {
                   // console.log(e.userRatings)
                     return(
                       <>
-                      <Link to={`/:${e.username}`}>
+                      <Link to={`/:${e.username}`} onClick={()=>setFreelancer(e)}>
                         <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileUrl}  key={e.id} ratings={JSON.parse(e.userRatings)}/>
                       </Link>
                       </>
