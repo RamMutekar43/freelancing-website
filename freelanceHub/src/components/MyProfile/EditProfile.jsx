@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import { Box, Button, CloseButton, Dialog, Flex, Input, Portal, Text, VStack } from "@chakra-ui/react"
+import {
+  Box, Button, CloseButton, Dialog, Flex,
+  Input, Portal, Text, VStack
+} from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom'
 
 const EditProfile = ({ details }) => {
@@ -13,10 +16,9 @@ const EditProfile = ({ details }) => {
     githubLink: details?.githubLink || ""
   });
 
-  const token = localStorage.getItem('token'); // Get the token from localStorage
   const [file, setFile] = useState(null);
-  // console.log("details", details);
-const navigate = useNavigate()
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,9 +33,8 @@ const navigate = useNavigate()
   };
 
   const handleSave = async () => {
-    const formData = new FormData();
-    formData.append("image", file);
     try {
+      // Update profile data (excluding image)
       const response = await fetch('http://localhost:8080/api/users/updateProfile', {
         method: 'PUT',
         headers: {
@@ -43,47 +44,43 @@ const navigate = useNavigate()
         body: JSON.stringify(inputs)
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to update profile');
+      if (!response.ok) throw new Error('Failed to update profile');
+
+      // Upload profile image if selected
+      if (file) {
+        const formData = new FormData();
+        formData.append("image", file);
+
+        const imageResponse = await fetch("http://localhost:8080/api/users/uploadProfileImage", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        });
+
+        if (!imageResponse.ok) throw new Error("Image upload failed");
+
+        const imageData = await imageResponse.json();
+        console.log("Image uploaded successfully:", imageData);
       }
 
-      // const data = await response.json();
-      // console.log("Profile updated:", data);
-
-      const responseImg = await fetch("http://localhost:8080/api/users/uploadProfileImage", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
-
-      if (!responseImg.ok) throw new Error("Upload failed");
-
-      const profiledata = await responseImg.json();
-      console.log("Upload success:", profiledata);
-      alert("Profile is Updated.")
-      navigate('/profile')
+      alert("Profile updated successfully.");
+      navigate('/profile');
       window.location.reload();
 
     } catch (error) {
       console.error("Error updating profile:", error);
+      alert("Something went wrong. Please try again.");
     }
   };
-
-
 
   return (
     <Box py={2}>
       <Dialog.Root size={'lg'} placement={'center'}>
         <Dialog.Trigger asChild>
           <Flex gap={2} alignItems={'center'} cursor={'pointer'} color={'blue.700'}>
-            <Button
-              bg={'white'}
-              color={'black'}
-              _hover={{ bg: "whiteAlpha.800" }}
-              size={{ base: 'xs', md: "sm" }}
-            >
+            <Button bg={'white'} color={'black'} _hover={{ bg: "whiteAlpha.800" }} size={{ base: 'xs', md: "sm" }}>
               Edit Profile
             </Button>
           </Flex>
@@ -94,115 +91,27 @@ const navigate = useNavigate()
             <Dialog.Content>
               <Dialog.Body>
                 <VStack w={'full'} border={'1px solid'} mt={10} py={5} px={5} borderRadius={10}
-                  backgroundColor={'whiteAlpha.900'}
-                  shadow={'sm'}>
+                  backgroundColor={'whiteAlpha.900'} shadow={'sm'}>
                   
-                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
-                    <Text color={'black'}>Username:</Text>
-                    <Input
-                      name="username"
-                      value={inputs.username}
-                      onChange={handleChange}
-                      placeholder='Username...'
-                      size={'sm'}
-                      color={'black'}
-                      variant={'flushed'}
-                      fontSize={14}
-                    />
-                  </Flex>
-
-                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
-                    <Text color={'black'}>Email:</Text>
-                    <Input
-                      name="email"
-                      value={inputs.email}
-                      onChange={handleChange}
-                      placeholder='Email...'
-                      size={'sm'}
-                      color={'black'}
-                      variant={'flushed'}
-                      fontSize={14}
-                    />
-                  </Flex>
-
-                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
-                    <Text color={'black'}>Skills:</Text>
-                    <Input
-                      name="skills"
-                      value={inputs.skills.join(", ")}
-                      onChange={handleChange}
-                      placeholder='e.g. HTML, CSS, JavaScript'
-                      size={'sm'}
-                      color={'black'}
-                      variant={'flushed'}
-                      fontSize={14}
-                    />
-                  </Flex>
-
-                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
-                    <Text color={'black'}>Bio:</Text>
-                    <Input
-                      name="bio"
-                      value={inputs.bio}
-                      onChange={handleChange}
-                      placeholder='Bio...'
-                      size={'sm'}
-                      color={'black'}
-                      variant={'flushed'}
-                      fontSize={14}
-                    />
-                  </Flex>
-
-                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
-                    <Text color={'black'}>Domain:</Text>
-                    <Input
-                      name="domain"
-                      value={inputs.domain}
-                      onChange={handleChange}
-                      placeholder='Domain...'
-                      size={'sm'}
-                      color={'black'}
-                      variant={'flushed'}
-                      fontSize={14}
-                    />
-                  </Flex>
-
-                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
-                    <Text color={'black'}>Experience:</Text>
-                    <Input
-                      name="experience"
-                      value={inputs.experience}
-                      onChange={handleChange}
-                      placeholder='Experience...'
-                      size={'sm'}
-                      color={'black'}
-                      variant={'flushed'}
-                      fontSize={14}
-                    />
-                  </Flex>
-
-                  <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
-                    <Text color={'black'}>GitHub:</Text>
-                    <Input
-                      name="githubLink"
-                      value={inputs.githubLink}
-                      onChange={handleChange}
-                      placeholder='GitHub profile URL...'
-                      size={'sm'}
-                      color={'black'}
-                      variant={'flushed'}
-                      fontSize={14}
-                    />
-                  </Flex>
+                  {["username", "email", "skills", "bio", "domain", "experience", "githubLink"].map(field => (
+                    <Flex key={field} w={'full'} py={3} alignItems={'baseline'} gap={3}>
+                      <Text color={'black'}>{field.charAt(0).toUpperCase() + field.slice(1)}:</Text>
+                      <Input
+                        name={field}
+                        value={field === "skills" ? inputs.skills.join(", ") : inputs[field]}
+                        onChange={handleChange}
+                        placeholder={field + "..."}
+                        size={'sm'} color={'black'} variant={'flushed'} fontSize={14}
+                      />
+                    </Flex>
+                  ))}
 
                   <Flex w={'full'} py={3} alignItems={'baseline'} gap={3}>
                     <Text color={'black'}>Profile Image:</Text>
                     <Input
                       name="profileImage"
                       type='file'
-                      // value={inputs.githubLink}
                       onChange={handleFileChange}
-                      // placeholder='GitHub profile URL...'
                       size={'sm'}
                       color={'black'}
                       variant={'flushed'}
@@ -216,14 +125,13 @@ const navigate = useNavigate()
                       w={"full"}
                       fontSize={"sm"}
                       _hover={{ shadow: 'sm' }}
-                      onClick={handleSave} // Call handleSave on click
+                      onClick={handleSave}
                     >
                       Save
                     </Button>
                   </Box>
                 </VStack>
               </Dialog.Body>
-
               <Dialog.CloseTrigger asChild>
                 <CloseButton size="sm" />
               </Dialog.CloseTrigger>

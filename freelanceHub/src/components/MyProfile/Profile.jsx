@@ -8,32 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import { Skeleton } from '../ui/skeleton';
 
 const Profile = ({details}) => {
-    // console.log(details)
+    console.log(details)
     const [updated, setUpdated] = useState(false)
     const token = localStorage.getItem('token')
-
-    // useEffect(()=>{
-    //     fetch("http://localhost:8080/upload",{
-    //         method: "GET",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           Authorization: `Bearer ${token}`,  // Use token from context in the Authorization header
-    //         },
-    //       })
-    //         .then((res) => {
-    //           if (!res.ok) {
-    //             throw new Error("Failed to fetch freelancers");
-    //           }
-    //           return  res.json();
-    //         })
-    //         .then((data) => {
-    //           localStorage.setItem('user', JSON.stringify(data))
-    //           console.log(data)
-    //         })
-    //         .catch((err) => {
-    //           console.error("Error:", err);
-    //         });
-    // },[])
     
     return (
         <>
