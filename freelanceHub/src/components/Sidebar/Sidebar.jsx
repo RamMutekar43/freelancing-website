@@ -21,15 +21,14 @@ const Sidebar = () => {
     <Box
       bg="#0A0E1A"
       color="whiteAlpha.900"
-      height="100vh"
+      height="76vh" // Reduced height from 100vh to 95vh to avoid scrollbar
       borderRight="1px solid"
       borderColor="whiteAlpha.200"
-      py={2}
+      py={2} // Reduced padding to minimize space
       px={{ base: 2, md: 4 }}
       position="sticky"
       top={0}
       left={0}
-      h="80vh"
     >
       <Flex direction="column" gap={10} width="full" height="full">
         {/* Sidebar Items */}
@@ -61,7 +60,6 @@ const Sidebar = () => {
               bg: 'whiteAlpha.100',
             }}
             mb={5}  
-            // {/* Added margin-bottom to create space between the button and the screen end */}
           >
             <BiLogOut size={22} />
             <Button
