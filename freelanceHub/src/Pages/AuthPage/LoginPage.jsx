@@ -10,7 +10,7 @@ const LoginPage = () => {
   return (
     <>
     
-    <Flex alignItems={"center"} justifyContent={"center"} minH={"90vh"} p={4} color={"white"} backgroundColor={'black'}>
+    <Flex alignItems={"center"} justifyContent={"center"} minH={"90vh"} p={4} color={"white"} backgroundColor={'transparent'}>
         <Container minW={"container.md"} p={0} >
             <Flex alignItems={"center"} justifyContent={"center"} >
                 {/* left side image */}
