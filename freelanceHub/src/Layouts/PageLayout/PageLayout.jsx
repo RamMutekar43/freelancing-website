@@ -3,6 +3,7 @@ import { Box, Button, Flex, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { AiOutlineMenu } from 'react-icons/ai';
+import Chatbot from '../../components/Chatbot/Chatbot';
 // import Footer from '../../components/Footer/Footer';
 
 const PageLayout = ({ children }) => {
@@ -37,6 +38,11 @@ const PageLayout = ({ children }) => {
               </Button>
             </Flex>
 
+            {/* ChatBot */}
+            <Flex position={'fixed'} zIndex={0}>
+              <Chatbot/>
+            </Flex>
+
             {isMenu && (
               <Box w={{ base: "70px", md: "240px" }}>
                 <Sidebar />
@@ -59,10 +65,9 @@ const PageLayout = ({ children }) => {
         </Box>
       </Flex>
 
-      {/* Optional Footer */}
-      {/* <Box bg="#111827" w="full">
-        <Footer />
-      </Box> */}
+      {/* ChatBot */}
+      
+          <Chatbot/>
     </Box>
   );
 };
