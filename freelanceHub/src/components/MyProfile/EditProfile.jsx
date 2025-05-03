@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 const EditProfile = ({ details }) => {
   const [inputs, setInputs] = useState({
-    username: details?.username || "",
-    email: details?.email || "",
+    // username: details?.username || "",
+    // email: details?.email || "",
     skills: details?.skills || [""],
     experience: details?.experience || "",
     domain: details?.domain || "",
@@ -104,7 +104,9 @@ const EditProfile = ({ details }) => {
                   border="2px solid rgba(100, 170, 240, 0.9)"
                   boxShadow="0 0 15px rgba(59, 130, 246, 0.4)"
                 >
-                  {["username", "email", "skills", "bio", "domain", "experience", "githubLink"].map(field => (
+                  {[
+                    // "username", "email", 
+                    "skills", "bio", "domain", "experience", "githubLink"].map(field => (
                     <Flex key={field} w={'full'} py={2} alignItems={'baseline'} gap={3}>
                       <Text color="blue.100" fontWeight="semibold" w="40%">
                         {field.charAt(0).toUpperCase() + field.slice(1)}:
