@@ -33,8 +33,8 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Founders</h4>
           <ul className="space-y-3">
-            <li>
-              <p className="font-medium text-white">Ram Mutekar</p>
+            <li className=" flex gap-5">
+              <p className="font-medium text-white w-2/5">Ram Mutekar</p>
               <div className="flex gap-3 mt-1 text-lg">
                 <a
                   href="https://www.linkedin.com/in/ram-mutekar-4b6a49256/"
@@ -54,8 +54,8 @@ export default function Footer() {
                 </a>
               </div>
             </li>
-            <li>
-              <p className="font-medium text-white">Akshay Khardekar</p>
+            <li className=" flex gap-5">
+            <p className="font-medium text-white w-2/5">Akshay Khardekar</p>
               <div className="flex gap-3 mt-1 text-lg">
                 <a
                   href="https://www.linkedin.com/in/akshay-khardekar-65a303257/"
@@ -67,6 +67,50 @@ export default function Footer() {
                 </a>
                 <a
                   href="https://github.com/akshayKhardekar10"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ cursor: "pointer" }} // Make sure pointer shows
+                >
+                  <FaGithub />
+                </a>
+              </div>
+            </li>
+
+            <li className=" flex gap-5">
+            <p className="font-medium text-white w-2/5">Bhoomi Narode</p>
+              <div className="flex gap-3 mt-1 text-lg">
+                <a
+                  href="https://www.linkedin.com/in/bhoomi-narode-54814226b/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ cursor: "pointer" }} // Make sure pointer shows
+                >
+                  <FaLinkedin />
+                </a>
+                <a
+                  href="/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ cursor: "pointer" }} // Make sure pointer shows
+                >
+                  <FaGithub />
+                </a>
+              </div>
+            </li>
+
+            <li className=" flex gap-5">
+            <p className="font-medium text-white w-2/5">Sayali Kanawade</p>
+              <div className="flex gap-3 mt-1 text-lg">
+                <a
+                  href="https://www.linkedin.com/in/sayali-kanawade-96598a269/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ cursor: "pointer" }} // Make sure pointer shows
+                >
+                  <FaLinkedin />
+                </a>
+                <a
+                  href="/"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ cursor: "pointer" }} // Make sure pointer shows

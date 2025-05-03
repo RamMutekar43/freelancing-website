@@ -22,7 +22,7 @@ const FreelancerProfile = () => {
         my={5}
         borderRadius={15}
         py={5}
-        minH={'84vh'}
+        minH={'82vh'}
         color={'whiteAlpha.900'}
       >
         {isLoading && [0].map((_, idx) => (

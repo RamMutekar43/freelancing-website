@@ -37,38 +37,44 @@ const Application = ({ application }) => {
 
   return (
     <Box pe={10} py={5} w="3/4">
-      <Flex backgroundColor="whiteAlpha.400" w="full" shadow="sm" borderRadius={5}>
+      <Flex 
+      border="1px solid #334155"
+      backgroundColor="#0f172a"
+      boxShadow="0 0 12px rgba(30, 58, 138, 0.3)" 
+      w="full" 
+      // shadow="sm" 
+      borderRadius={5}>
         <VStack w="full" py={5} px={10}>
           <Flex w="full" justifyContent="space-between">
-            <Flex color="black" gap={2} alignItems="baseline" w={'1/2'}>
+            <Flex color="white" gap={2} alignItems="baseline" w={'1/2'}>
               <Text fontWeight="bold">Applicant:</Text>
               <Text>{application.applicantUsername}</Text>
             </Flex>
-            <Flex color="black" gap={2} alignItems="baseline" w={'1/2'}>
+            <Flex color="white" gap={2} alignItems="baseline" w={'1/2'}>
               <Text fontWeight="bold">Domain:</Text>
               <Text>{application.domain}</Text>
             </Flex>
           </Flex>
 
-          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+          <Flex color="white" gap={2} alignItems="baseline" w={'full'}>
             <Text fontWeight="bold">Bid Price:</Text>
             <Text>{application.bidPrice}</Text>
           </Flex>
-          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+          <Flex color="white" gap={2} alignItems="baseline" w={'full'}>
             <Text fontWeight="bold">Experience:</Text>
             <Text>{application.experience}</Text>
           </Flex>
-          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+          <Flex color="white" gap={2} alignItems="baseline" w={'full'}>
             <Text fontWeight="bold">Reference Work:</Text>
             <a href={application.githubLink} target="_blank" rel="noopener noreferrer">{application.githubLink}</a>
           </Flex>
-          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+          <Flex color="white" gap={2} alignItems="baseline" w={'full'}>
             <Text fontWeight="bold">Cover Letter:</Text>
             <Text>{application.coverLetter}</Text>
           </Flex>
 
           {/* Show status */}
-          <Flex color="black" gap={2} alignItems="baseline" w={'full'}>
+          <Flex color="white" gap={2} alignItems="baseline" w={'full'}>
             <Text fontWeight="bold">Current Status:</Text>
             <Text>{status}</Text>  {/* Display the current status */}
           </Flex>

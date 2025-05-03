@@ -42,10 +42,19 @@ const GetApplications = ({jobId}) => {
 
   return (
     <>
-    <VStack color="black" backgroundColor="whiteAlpha.900" my={5} borderRadius={15} py={5} minH="80vh">
+    <VStack c
+    olor="black" 
+    background="linear-gradient(135deg, #243B55, #141E30)"
+    border="2px solid rgba(100, 170, 240, 0.9)"
+    // bgGradient="linear(to-br, #0f172a, #1e293b)"
+    // borderRadius="xl"
+    backgroundColor="#3a4a5a" 
+    my={5} 
+    borderRadius={15} 
+    py={5} minH="80vh">
       <Container w="full">
         <VStack>
-          <Box>Applications</Box>
+          <Box fontWeight={'bold'} textStyle={'xl'}>Applications</Box>
           {applications.map((e,idx)=>{
             return (
                 <>
