@@ -1,45 +1,53 @@
-import { Box, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
-import { CgArrowLongRight } from 'react-icons/cg'
+import { Box, Text, VStack } from '@chakra-ui/react';
+import React from 'react';
+import { CgArrowLongRight } from 'react-icons/cg';
+import { motion } from 'framer-motion';
 
-const Service = ({title,description,icon}) => {
-    // const icon = <SlEarphonesAlt/>
+const MotionBox = motion(Box);
+
+const Service = ({ title, description, icon }) => {
   return (
-    <>
-    <VStack 
-    cursor={'pointer'}
-    _hover={{ bg: "whiteAlpha.400", shadow:"sm" }}
-    borderRadius={6}
-    transition={"background 0.2s ease-in-out"}
-    h={'50vh'}
-    p={5}
-    textAlign={'center'}
-    color={'black'}
-    backgroundColor={"#DFE8E6"}
-    border={'1px solid rgb(208, 213, 212)'} >
-        {icon}
-        <Text
-        fontWeight={'medium'}
-        fontSize={'xl'}
-        pt={3}
-        >
-            {title}
-        </Text>
-        <Text
-        fontSize={'lg'}
-        fontWeight={'light'}
-        >
-            {description}
-        </Text>
-        <Box 
-        mt={'auto'} 
-        w={'full'} 
-        >
-        <CgArrowLongRight size={30}/>
-        </Box>
-    </VStack>
-    </>
-  )
-}
+    <MotionBox
+      whileHover={{
+        scale: 1.03,
+      }}
+      whileTap={{ scale: 0.98 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
+      borderRadius="lg" // minimized radius
+      p="2px"
+      background="linear-gradient(135deg, rgba(0,255,255,0.8), rgba(255,255,255,0.4), rgba(128,0,128,0.8))"
+    >
+      <Box
+        borderRadius="lg"
+        background="linear-gradient(135deg, #1A1D29, #0A0E1A)"
+        p={6}
+        h={{ base: '60vh', md: '50vh' }}
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        alignItems="center"
+        textAlign="center"
+        color="whiteAlpha.900"
+      >
+        <Box>{icon}</Box>
 
-export default Service
+        <Text fontWeight="semibold" fontSize="xl" pt={2}>
+          {title}
+        </Text>
+
+        <Text fontSize="md" fontWeight="light" opacity={0.9}>
+          {description}
+        </Text>
+
+        <Box mt="auto" w="full" display="flex" justifyContent="center">
+          <CgArrowLongRight size={28} />
+        </Box>
+      </Box>
+    </MotionBox>
+  );
+};
+
+export default Service;

@@ -72,7 +72,7 @@ const FreelancerProfile = () => {
               >
                   <Avatar.Root>
                   <Avatar.Image name="this is alita" 
-                  // src={details.profileImageUrl} 
+                  src={freelancer.profileImageUrl} 
                   alt="this is alita" />
                   </Avatar.Root>
               </AvatarGroup>

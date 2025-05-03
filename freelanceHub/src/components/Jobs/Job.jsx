@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import {
-  Flex, Text, VStack, Box, Button, Dialog, Portal, Input, CloseButton,
-  Container, Fieldset, Field, Textarea
-} from '@chakra-ui/react';
+import { Flex, Text, VStack, Box, Button, Dialog, Portal, Input, CloseButton, Container, Fieldset, Field, Textarea } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import GetApplications from '../JobApplicationForm/GetApplications';
+
+// Motion component for animated background
+const MotionBox = motion(Box);
 
 const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }) => {
   const [isApplied, setIsApplied] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem('user'));
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
-  const {pathname} = useLocation()
+  const { pathname } = useLocation();
 
-  const showApplication = pathname == "/my-posts";
-  // console.log(jobId)
-
+  const showApplication = pathname === "/my-posts";
 
   const [formData, setFormData] = useState({
     name: currentUser?.username || '',
@@ -27,7 +26,7 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const applyJob = async () => {
@@ -46,7 +45,6 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
 
       if (res.ok) {
         alert('Applied successfully.');
-        // setIsApplied(true);
         navigate('/get-job');
       } else {
         const errorText = await res.text();
@@ -58,8 +56,19 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
   };
 
   return (
-    <Box pe={10} py={5} w="full">
-      <Flex backgroundColor="whiteAlpha.400" w="full" shadow="sm" borderRadius={5}>
+    <Box pe={10} py={5} w="full" position="relative">
+      {/* MotionBox with metallic background animation */}
+      <MotionBox
+        background="linear-gradient(135deg, #B0B0B0, #E0E0E0)"
+        w="full"
+        shadow="lg"
+        borderRadius={10}
+        p={5}
+        _hover={{ transform: 'scale(1.02)', transition: 'transform 0.3s ease-in-out' }}
+        animation="fadeIn 1s ease-in-out"
+        position="relative"
+        zIndex={2}
+      >
         <VStack w="4/5" py={5} px={10}>
           <Flex w="full" justifyContent="space-between">
             <Flex color="black" gap={2} alignItems="baseline">
@@ -91,18 +100,17 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
           </Flex>
         </VStack>
 
-        {
-          showApplication ? (
-            <>
-            <Flex w="1/5" alignItems="center" justifyContent="center">
+        {/* Application Button or Dialog for Viewing Applications */}
+        {showApplication ? (
+          <Flex w="full" justifyContent="flex-end">
             <Dialog.Root size="cover" placement="center">
-              
               <Dialog.Trigger asChild>
                 <Button
                   backgroundColor="blue.400"
-                  _hover={{ shadow: 'sm' }}
+                  _hover={{ shadow: 'sm', transform: 'scale(1.05)' }}
+                  _active={{ transform: 'scale(1)' }}
                 >
-                 Applications
+                  Applications
                 </Button>
               </Dialog.Trigger>
 
@@ -111,7 +119,7 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
                 <Dialog.Positioner>
                   <Dialog.Content>
                     <Dialog.Body>
-                      <GetApplications jobId={JSON.stringify(jobId)}/>
+                      <GetApplications jobId={JSON.stringify(jobId)} />
                     </Dialog.Body>
                     <Dialog.CloseTrigger asChild>
                       <CloseButton size="sm" />
@@ -120,132 +128,125 @@ const Job = ({ title, description, price, jobId, owner, date, domain, postedBy }
                 </Dialog.Positioner>
               </Portal>
             </Dialog.Root>
-            </Flex>
-            </>
-          ):
-          (
-            <>
-            <Flex w="1/5" alignItems="center" justifyContent="center">
-          {
-          (currentUser.id !== JSON.parse(postedBy)) ? (
-            <Dialog.Root size="lg" placement="center">
-              
-              <Dialog.Trigger asChild>
-                <Button
-                  backgroundColor="blue.400"
-                  _hover={{ shadow: 'sm' }}
-                >
-                  {isApplied ? "Applied" : "Apply"}
-                </Button>
-              </Dialog.Trigger>
+          </Flex>
+        ) : (
+          <Flex w="full" justifyContent="flex-end">
+            {currentUser.id !== JSON.parse(postedBy) && (
+              <Dialog.Root size="lg" placement="center">
+                <Dialog.Trigger asChild>
+                  <Button
+                    backgroundColor="blue.400"
+                    _hover={{ shadow: 'sm', transform: 'scale(1.05)' }}
+                    _active={{ transform: 'scale(1)' }}
+                  >
+                    {isApplied ? "Applied" : "Apply"}
+                  </Button>
+                </Dialog.Trigger>
 
-              <Portal>
-                <Dialog.Backdrop />
-                <Dialog.Positioner>
-                  <Dialog.Content>
-                    <Dialog.Body>
-                      <VStack color="black" backgroundColor="whiteAlpha.900" my={5} borderRadius={15} py={5} minH="80vh">
-                        <Container w="full">
-                          <VStack>
-                            <Fieldset.Root size="lg" maxW="lg" mx="auto" p="6" boxShadow="md" borderRadius="xl">
-                              <VStack spacing="6">
-                                <VStack spacing="2">
-                                  <Fieldset.Legend fontSize="2xl" fontWeight="bold" color="black">
-                                    Job Application Form
-                                  </Fieldset.Legend>
-                                  <Fieldset.HelperText fontSize="sm">
-                                    Please fill out the form carefully to apply for the job.
-                                  </Fieldset.HelperText>
+                <Portal>
+                  <Dialog.Backdrop />
+                  <Dialog.Positioner>
+                    <Dialog.Content>
+                      <Dialog.Body>
+                        <VStack color="black" backgroundColor="whiteAlpha.900" my={5} borderRadius={15} py={5} minH="80vh">
+                          <Container w="full">
+                            <VStack>
+                              <Fieldset.Root size="lg" maxW="lg" mx="auto" p="6" boxShadow="md" borderRadius="xl">
+                                <VStack spacing="6">
+                                  <VStack spacing="2">
+                                    <Fieldset.Legend fontSize="2xl" fontWeight="bold" color="black">
+                                      Job Application Form
+                                    </Fieldset.Legend>
+                                    <Fieldset.HelperText fontSize="sm">
+                                      Please fill out the form carefully to apply for the job.
+                                    </Fieldset.HelperText>
+                                  </VStack>
+
+                                  <Fieldset.Content>
+                                    <Field.Root>
+                                      <Field.Label>Name</Field.Label>
+                                      <Input
+                                        background="transparent"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        placeholder="Enter your full name"
+                                        isRequired
+                                      />
+                                    </Field.Root>
+
+                                    <Field.Root>
+                                      <Field.Label>Email Address</Field.Label>
+                                      <Input
+                                        background="transparent"
+                                        name="email"
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="Enter your email"
+                                        isRequired
+                                      />
+                                    </Field.Root>
+
+                                    <Field.Root>
+                                      <Field.Label>Bid Price</Field.Label>
+                                      <Input
+                                        background="transparent"
+                                        name="bidPrice"
+                                        type="text"
+                                        value={formData.bidPrice}
+                                        onChange={handleChange}
+                                        placeholder="Enter your bid price"
+                                        isRequired
+                                      />
+                                    </Field.Root>
+
+                                    <Field.Root>
+                                      <Field.Label>Sample Work</Field.Label>
+                                      <Input
+                                        background="transparent"
+                                        name="githubLink"
+                                        value={formData.githubLink}
+                                        onChange={handleChange}
+                                        placeholder="Sample work reference link..."
+                                        isRequired
+                                      />
+                                    </Field.Root>
+
+                                    <Field.Root>
+                                      <Field.Label>Cover Letter</Field.Label>
+                                      <Textarea
+                                        background="transparent"
+                                        name="coverLetter"
+                                        value={formData.coverLetter}
+                                        onChange={handleChange}
+                                        placeholder="Tell us why you're a great fit for this role..."
+                                        rows={5}
+                                        isRequired
+                                      />
+                                    </Field.Root>
+                                  </Fieldset.Content>
+
+                                  <Button type="submit" colorScheme="teal" alignSelf="flex-start" backgroundColor="blue.400" onClick={applyJob}>
+                                    Submit Application
+                                  </Button>
                                 </VStack>
-
-                                <Fieldset.Content>
-                                  <Field.Root>
-                                    <Field.Label>Name</Field.Label>
-                                    <Input
-                                      background="transparent"
-                                      name="name"
-                                      value={formData.name}
-                                      onChange={handleChange}
-                                      placeholder="Enter your full name"
-                                      isRequired
-                                    />
-                                  </Field.Root>
-
-                                  <Field.Root>
-                                    <Field.Label>Email Address</Field.Label>
-                                    <Input
-                                      background="transparent"
-                                      name="email"
-                                      type="email"
-                                      value={formData.email}
-                                      onChange={handleChange}
-                                      placeholder="Enter your email"
-                                      isRequired
-                                    />
-                                  </Field.Root>
-
-                                  <Field.Root>
-                                    <Field.Label>Bid Price</Field.Label>
-                                    <Input
-                                      background="transparent"
-                                      name="bidPrice"
-                                      type="text"
-                                      value={formData.bidPrice}
-                                      onChange={handleChange}
-                                      placeholder="Enter your bid price"
-                                      isRequired
-                                    />
-                                  </Field.Root>
-
-                                  <Field.Root>
-                                    <Field.Label>Sample Work</Field.Label>
-                                    <Input
-                                      background="transparent"
-                                      name="githubLink"
-                                      value={formData.githubLink}
-                                      onChange={handleChange}
-                                      placeholder="Sample work reference link..."
-                                      isRequired
-                                    />
-                                  </Field.Root>
-
-                                  <Field.Root>
-                                    <Field.Label>Cover Letter</Field.Label>
-                                    <Textarea
-                                      background="transparent"
-                                      name="coverLetter"
-                                      value={formData.coverLetter}
-                                      onChange={handleChange}
-                                      placeholder="Tell us why you're a great fit for this role..."
-                                      rows={5}
-                                      isRequired
-                                    />
-                                  </Field.Root>
-                                </Fieldset.Content>
-
-                                <Button type="submit" colorScheme="teal" alignSelf="flex-start" backgroundColor="blue.400" onClick={applyJob}>
-                                  Submit Application
-                                </Button>
-                              </VStack>
-                            </Fieldset.Root>
-                          </VStack>
-                        </Container>
-                      </VStack>
-                    </Dialog.Body>
-                    <Dialog.CloseTrigger asChild>
-                      <CloseButton size="sm" />
-                    </Dialog.CloseTrigger>
-                  </Dialog.Content>
-                </Dialog.Positioner>
-              </Portal>
-            </Dialog.Root>
-          ) : null
-          }
-            </Flex>
-            </>
-          )
-        }
-      </Flex>
+                              </Fieldset.Root>
+                            </VStack>
+                          </Container>
+                        </VStack>
+                      </Dialog.Body>
+                      <Dialog.CloseTrigger asChild>
+                        <CloseButton size="sm" />
+                      </Dialog.CloseTrigger>
+                    </Dialog.Content>
+                  </Dialog.Positioner>
+                </Portal>
+              </Dialog.Root>
+            )}
+          </Flex>
+        )}
+      </MotionBox>
     </Box>
   );
 };

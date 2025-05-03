@@ -1,74 +1,70 @@
-// import Sidebar from '../../components/Sidebar/Sidebar'
 import Navbar from '../../components/Navbar/Navbar';
-import { Box, Button, Flex, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Box, Button, Flex, VStack } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { AiOutlineMenu } from 'react-icons/ai';
-import Footer from '../../components/Footer/Footer';
+// import Footer from '../../components/Footer/Footer';
 
+const PageLayout = ({ children }) => {
+  const [isMenu, setIsMenu] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem('user'));
 
-const PageLayout = ({children}) => {
-    const [isMenu, setIsMenu] = useState(false);
-    const [isAuth,setIsAuth] = useState(localStorage.getItem('user'))
-    // const user = localStorage.getItem('user')
-    
-    
-    return (
-    <>
-    <Box backgroundColor={'#DFE8E6'}>
-        <Box 
-        backgroundColor={'black'}
-        w={'full'}>
-            <Navbar isAuth={isAuth}/>
-        </Box>
+  return (
+    <Box bg="#0A0E1A" minH="100vh">
+      {/* Navbar with single color background */}
+      <Box 
+        bg='transparent'  // A darker solid color that will match the theme
+        w="full"
+      >
+        <Navbar isAuth={isAuth} />
+      </Box>
 
-        <Flex>
-            {/* left  sidebar */}
-            {isAuth ? (
-            <>
-            <VStack gap={0}>
-            <Flex w={'full'}  h={'10vh'} px={3} alignItems={'center'}>
-            <Button  
-            backgroundColor={"#DFE8E6"} 
-            onClick={()=>setIsMenu(!isMenu)}
-            shadow={'sm'}
-            _hover={{cursor:'pointer'}}
-            py={4}
-            px={2}>
-                <AiOutlineMenu color='black' size={40}/>
-            </Button>
+      {/* Main content layout */}
+      <Flex>
+        {/* Sidebar Toggle + Sidebar */}
+        {isAuth && (
+          <VStack spacing={0}>
+            <Flex w="full" h="10vh" px={3} alignItems="center">
+              <Button
+                backgroundColor="whiteAlpha.100"
+                onClick={() => setIsMenu(!isMenu)}
+                shadow="md"
+                _hover={{ backgroundColor: "whiteAlpha.200" }}
+                py={4}
+                px={2}
+              >
+                <AiOutlineMenu color="white" size={30} />
+              </Button>
             </Flex>
 
-            {isMenu ? (
-                <Box w={{base:"70px",md:"240px"}}>
-                <Sidebar/>
-                </Box>
-            ) : null}
-            </VStack>
-            </>
-            ) : null}
+            {isMenu && (
+              <Box w={{ base: "70px", md: "240px" }}>
+                <Sidebar />
+              </Box>
+            )}
+          </VStack>
+        )}
 
-    
-            {/* right side conntent */}
-            
-            <Box 
-            maxH={'90vh'}
-            flex={1} 
-            w={{base:"calc(100% -70px)",md:"calc(100% -240px)"}}
-            overflowY={'auto'} 
-            >
-                {children}
-            </Box>
-        </Flex>
+        {/* Page Content */}
+        <Box
+          flex={1}
+          w={{ base: "calc(100% - 70px)", md: "calc(100% - 240px)" }}
+          maxH="90vh"
+          overflowY="auto"
+          px={4}
+          py={2}
+          color="white"
+        >
+          {children}
+        </Box>
+      </Flex>
 
-        {/* <Box 
-        backgroundColor={'#A0430A'}
-        w={'full'}>
-            <Footer/>
-        </Box> */}
+      {/* Optional Footer */}
+      {/* <Box bg="#111827" w="full">
+        <Footer />
+      </Box> */}
     </Box>
-    </>
-    )
-}
+  );
+};
 
-export default PageLayout
+export default PageLayout;

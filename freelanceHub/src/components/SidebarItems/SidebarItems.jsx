@@ -1,54 +1,51 @@
-import { Box, Flex,  LinkBox,  Text,  VStack } from '@chakra-ui/react';
+import { Box, Flex, Text, VStack } from '@chakra-ui/react';
 import { Tooltip } from '../ui/tooltip';
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SidebarItems = () => {
-    const menuItems = [
-        { title: "Profile", route: "/profile" },
-        { title: "Post Job", route: "/post-job" },
-        { title: "My Posts", route: "/my-posts" },
-        // { title: "Notifications", route: "/notifications" }
-      ];
-      
+  const menuItems = [
+    { title: 'Profile', route: '/profile' },
+    { title: 'Post Job', route: '/post-job' },
+    { title: 'My Posts', route: '/my-posts' },
+    // { title: "Notifications", route: "/notifications" }
+  ];
 
   return (
-    <VStack>
-        {menuItems.map((e,idx)=>{
-            // console.log(e)
-            return (
-                <>
-                
-                <Tooltip
-                showArrow
-                content={e.title}
-                positioning = {{placement:'right-center'}}
-                openDelay={500}
-                closeDelay={100}
-                display={{ base: "block", md: "none" }}
-                idx ={idx}
-                >   
-                    <Box
-                    transition={"background 0.2s ease-in-out"}
-                    gap={4}
-                    _hover={{ bg: "whiteAlpha.400", shadow:"sm" }}
-                    borderRadius={6}
-                    p={2}
-                    w={{ base: 10, md: "full" }}
-                    mt={"auto"}
-                    >
-                        <Link to={e.route}>
-                        <Text>
-                        {e.title}
-                        </Text>
-                        </Link>
-                    </Box>
-                </Tooltip>
-                </>
-            )
-        })}
+    <VStack spacing={4}>
+      {menuItems.map((e, idx) => (
+        <Tooltip
+          key={idx}
+          showArrow
+          content={e.title}
+          positioning={{ placement: 'right-center' }}
+          openDelay={500}
+          closeDelay={100}
+          display={{ base: 'block', md: 'none' }}
+        >
+          <Box
+            transition="background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease"
+            _hover={{
+              transform: 'translateX(5px)',
+              boxShadow: '0px 0px 15px 3px rgba(0, 255, 255, 0.8)',  // Metallic glow ring
+              border: '1px solid rgba(0, 255, 255, 0.8)',  // Subtle glowing border
+            }}
+            borderRadius="10px"
+            p={3}
+            w="full"
+            _focus={{ outline: 'none' }}
+            border="1px solid transparent"  // Initial border invisible to create the glowing effect
+          >
+            <Link to={e.route}>
+              <Text fontSize="lg" fontWeight="medium" color="whiteAlpha.900">
+                {e.title}
+              </Text>
+            </Link>
+          </Box>
+        </Tooltip>
+      ))}
     </VStack>
-  )
-}
+  );
+};
 
-export default SidebarItems
+export default SidebarItems;

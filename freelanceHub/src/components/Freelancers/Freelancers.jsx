@@ -24,17 +24,17 @@ const Freelancers = ( { selectedDomain, freelancers}) => {
                     if(JSON.stringify(e.domain).toLowerCase() == JSON.stringify(selectedDomain).toLowerCase()) return(
                         <>
                         <Link to={`/:${e.username}`}>
-                        <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileUrl}  key={e.id} ratings={e.userRatings}/>
+                        <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileImageUrl}  key={e.id} ratings={e.userRatings}/>
                         </Link>
                         </>
                       )
                 }) : 
                 freelancers.map((e,key)=>{
-                  // console.log(e.userRatings)
+                  // console.log(e)
                     return(
                       <>
                       <Link to={`/:${e.username}`} onClick={()=>setFreelancer(e)}>
-                        <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileUrl}  key={e.id} ratings={JSON.parse(e.userRatings)}/>
+                        <Freelancer username={e.username} domain={e.domain} description={e.bio} url={e.profileImageUrl}  key={e.id} ratings={JSON.parse(e.userRatings)}/>
                       </Link>
                       </>
                     )
