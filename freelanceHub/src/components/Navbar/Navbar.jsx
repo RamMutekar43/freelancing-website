@@ -55,7 +55,8 @@ const Navbar = ({ isAuth }) => {
             <>
               <Link to="/login">
                 <MotionButton
-                  bg="blue.400"
+                  // bg="blue.400"
+                  variant={'outline'}
                   size="sm"
                   whileHover={{ scale: 1.05, boxShadow: 'lg' }}
                   whileTap={{ scale: 0.98 }}
@@ -63,8 +64,11 @@ const Navbar = ({ isAuth }) => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4 }}
                   colorScheme="blue"
+                  borderColor="blue.500"
                   _hover={{
                     bg: 'blue.500',
+                    color: '#0A0E1A',
+                    borderColor: 'blue.600',
                     boxShadow: '0 0 8px rgba(0, 0, 255, 0.5)',
                   }}
                 >
