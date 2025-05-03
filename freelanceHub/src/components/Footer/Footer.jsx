@@ -34,7 +34,7 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-4">Founders</h4>
           <ul className="space-y-3">
             <li className=" flex gap-5">
-              <p className="font-medium text-white w-2/5">Ram Mutekar</p>
+              <p className="font-medium text-gray-300 w-2/5">Ram Mutekar</p>
               <div className="flex gap-3 mt-1 text-lg">
                 <a
                   href="https://www.linkedin.com/in/ram-mutekar-4b6a49256/"
@@ -55,7 +55,7 @@ export default function Footer() {
               </div>
             </li>
             <li className=" flex gap-5">
-            <p className="font-medium text-white w-2/5">Akshay Khardekar</p>
+            <p className="font-medium text-gray-300 w-2/5">Akshay Khardekar</p>
               <div className="flex gap-3 mt-1 text-lg">
                 <a
                   href="https://www.linkedin.com/in/akshay-khardekar-65a303257/"
@@ -77,7 +77,7 @@ export default function Footer() {
             </li>
 
             <li className=" flex gap-5">
-            <p className="font-medium text-white w-2/5">Bhoomi Narode</p>
+            <p className="font-medium text-gray-300 w-2/5">Bhoomi Narode</p>
               <div className="flex gap-3 mt-1 text-lg">
                 <a
                   href="https://www.linkedin.com/in/bhoomi-narode-54814226b/"
@@ -99,7 +99,7 @@ export default function Footer() {
             </li>
 
             <li className=" flex gap-5">
-            <p className="font-medium text-white w-2/5">Sayali Kanawade</p>
+            <p className="font-medium text-gray-300 w-2/5">Sayali Kanawade</p>
               <div className="flex gap-3 mt-1 text-lg">
                 <a
                   href="https://www.linkedin.com/in/sayali-kanawade-96598a269/"
