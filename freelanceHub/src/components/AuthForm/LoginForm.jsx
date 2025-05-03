@@ -13,7 +13,13 @@ const LoginForm = () => {
  
   return (
     <>
-    <Box border={"1px solid gray"} p={5} borderRadius={4}>
+    <Box 
+    // borderStyle={'none'}
+    border={'2px solid'}
+    borderColor="blue.400"
+    // outlineColor={'blue.500'} 
+    p={5} 
+    borderRadius={4}>
       <VStack spaceY={4}>
       {/* <Image src='' 
       // h={200} 
@@ -26,12 +32,17 @@ const LoginForm = () => {
       </VStack>
     </Box>
 
-    <Box border={'1px solid gray'} p={5} borderRadius={4}>
+    <Box 
+    // borderStyle={'none'}
+    border={'2px solid'}
+    borderColor="blue.400"
+    // outlineColor={'blue.500'}
+    p={5} borderRadius={4}>
       <Flex alignItems={'center'} justifyContent={'center'}>
         <Box mx={4} fontSize={14}>
           Don't have an account?
         </Box>
-        <Box color={'blue.500'} cursor={'pointer'}>
+        <Box color={'purple.400'} cursor={'pointer'}>
           <Link to={'/signup'}>Sign up</Link>
         </Box>
       </Flex>

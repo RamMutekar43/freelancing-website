@@ -11,7 +11,7 @@ import { Box, Flex, Image, Link, Text, VStack } from '@chakra-ui/react';
 
 const Reviews = () => {
   return (
-    <Flex w="full" p={5}>
+    <Flex w="full" p={5} >
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -30,7 +30,7 @@ const Reviews = () => {
           <SwiperSlide key={i}>
             <Flex
               gap={10}
-              px={10}
+              px={20}
               py={8}
               backgroundColor="#1A1D29"
               border="1px solid"

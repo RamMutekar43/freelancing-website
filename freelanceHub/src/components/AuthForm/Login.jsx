@@ -7,6 +7,9 @@ import { loginSuccess } from '../../Store/authSlice';
 import { useAuth } from '../../context/AuthContext'; // Import the context
 import { InputGroup } from '../ui/input-group'
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import { motion } from 'framer-motion';
+
+const MotionButton = motion(Button);
 
 const Login = () => {
   const [inputs, setInputs] = useState({ email: '', password: '' });
@@ -47,6 +50,10 @@ const Login = () => {
         type="email"
         fontSize={14}
         placeholder="Email"
+        borderStyle={'none'}
+        border={'1px solid'}
+        borderColor="blue.400"
+        outlineColor={'blue.500'}
         size="sm"
         value={inputs.email}
         onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
@@ -65,7 +72,7 @@ const Login = () => {
               <Box h={'full'} position={'absolute'} left={-3}>
               <Button variant={'ghost'} size={'sm'} onClick={()=>{setShowPassword(!showPassword)}} px={0} 
               >
-                  {showPassword ? <IoMdEye/> : <IoMdEyeOff/>}
+                  {/* {showPassword ? <IoMdEye/> : <IoMdEyeOff/>} */}
               </Button>
               </Box>
           }
@@ -76,11 +83,32 @@ const Login = () => {
           value={inputs.password}
           onChange={(e)=>setInputs({...inputs,password:e.target.value})}
           size={'sm'}
+          borderStyle={'none'}
+        border={'1px solid'}
+        borderColor="blue.400"
+        outlineColor={'blue.500'}
           />
           </InputGroup>
-      <Button bg="blue.500" w="full" fontSize="sm" onClick={handleLogin}>
+      <MotionButton 
+      variant={'outline'}
+      size="sm"
+      whileHover={{ scale: 1.05, boxShadow: 'lg' }}
+      whileTap={{ scale: 0.98 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      colorScheme="blue"
+      borderColor="blue.500"
+      backgroundColor={'blue.500'}
+      _hover={{
+        bg: 'blue.400',
+        color: '#0A0E1A',
+        borderColor: 'blue.400',
+        boxShadow: '0 0 8px rgba(0, 0, 255, 0.5)',
+      }} 
+      w="full" fontSize="sm" onClick={handleLogin}>
         Log in
-      </Button>
+      </MotionButton>
     </>
   );
 };

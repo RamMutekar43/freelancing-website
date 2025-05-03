@@ -5,7 +5,7 @@ import Reviews from './Reviews';
 
 const ClientReviews = () => {
   return (
-    <Box pt={10} h={'100vh'} backgroundColor="#0A0E1A">
+    <Box pt={10} minH={'80vh'} backgroundColor="#0A0E1A">
       <VStack color="white" spacing={6}>
         <Flex
           textAlign="start"

@@ -15,7 +15,12 @@ const SignupForm = () => {
  
   return (
     <>
-    <Box border={"1px solid gray"} p={5} borderRadius={4}>
+    <Box 
+    // borderStyle={'none'}
+    border={'2px solid'}
+    borderColor="purple.400"
+    // outlineColor={'purple.500'}
+    p={5} borderRadius={4}>
       <VStack spaceY={4}>
       {/* <Image src='' 
       // h={200} 
@@ -28,12 +33,15 @@ const SignupForm = () => {
       </VStack>
     </Box>
 
-    <Box border={'1px solid gray'} p={5} borderRadius={4}>
+    <Box 
+    border={'2px solid'}
+    borderColor="purple.400"
+    p={5} borderRadius={4}>
       <Flex alignItems={'center'} justifyContent={'center'}>
         <Box mx={4} fontSize={14}>
           Already have an account?
         </Box>
-        <Box color={'blue.500'} cursor={'pointer'}>
+        <Box color={'blue.400'} cursor={'pointer'}>
         <Link to={'/login'}>Log in</Link>
         </Box>
       </Flex>
