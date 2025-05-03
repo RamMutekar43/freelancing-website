@@ -46,7 +46,7 @@ useEffect(() => {
 // console.log(jobs)
   return (
     <>
-    <VStack backgroundColor={'whiteAlpha.500'} my={5} borderRadius={15} py={5} minH={'100vh'}>
+    <VStack backgroundColor={'transparent'} my={5} borderRadius={15} py={5} minH={'100vh'}>
 
         {/* Jobs */}
         <Container w={'4/5'}>

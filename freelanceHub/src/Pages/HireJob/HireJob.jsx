@@ -56,6 +56,7 @@ const HireJob = () => {
           backgroundColor={'transparent'} // Keep background transparent
           w={'full'}
           borderRadius={'full'}
+          boxShadow="0 0 10px rgba(0, 0, 255, 0.5)" // Ring-light effect
         >
           <Input
             placeholder="Search Domain..."
@@ -69,10 +70,6 @@ const HireJob = () => {
             borderRadius={'full'}
             outlineColor={'blue.400'}
             color="white" // Ensure text color inside the input is white
-            _focus={{
-              borderColor: 'blue.500', // Blue border on focus
-              boxShadow: '0 0 8px 2px rgba(99, 179, 237, 0.6)', // Ringlight effect
-            }}
           />
         </InputGroup>
       </Box>
