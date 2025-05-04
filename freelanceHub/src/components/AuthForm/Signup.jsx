@@ -61,6 +61,7 @@ const Signup = () => {
     <Input type='email' fontSize={14} 
     placeholder='Email' 
     size={'sm'}
+    color='white'
     value={inputs.email}
     onChange={(e)=>setInputs({...inputs,email:e.target.value})}
     borderStyle={'none'}
@@ -72,6 +73,7 @@ const Signup = () => {
     <Input type='text' fontSize={14} 
     placeholder='Username' 
     size={'sm'}
+    color='white'
     value={inputs.username}
     onChange={(e)=>setInputs({...inputs,username:e.target.value})}
     borderStyle={'none'}
@@ -94,6 +96,7 @@ const Signup = () => {
     <Input type={showPassword ? 'text': 'password'}
     fontSize={14} 
     placeholder='Password'
+    color='white'
     value={inputs.password}
     onChange={(e)=>setInputs({...inputs,password:e.target.value})}
     size={'sm'}

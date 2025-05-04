@@ -55,6 +55,7 @@ const Login = () => {
         borderColor="blue.400"
         outlineColor={'blue.500'}
         size="sm"
+        color='white'
         value={inputs.email}
         onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
       />
@@ -72,7 +73,7 @@ const Login = () => {
               <Box h={'full'} position={'absolute'} left={-3}>
               <Button variant={'ghost'} size={'sm'} onClick={()=>{setShowPassword(!showPassword)}} px={0} 
               >
-                  {/* {showPassword ? <IoMdEye/> : <IoMdEyeOff/>} */}
+                  {showPassword ? <IoMdEye/> : <IoMdEyeOff/>}
               </Button>
               </Box>
           }
@@ -83,6 +84,7 @@ const Login = () => {
           value={inputs.password}
           onChange={(e)=>setInputs({...inputs,password:e.target.value})}
           size={'sm'}
+          color='white'
           borderStyle={'none'}
         border={'1px solid'}
         borderColor="blue.400"
