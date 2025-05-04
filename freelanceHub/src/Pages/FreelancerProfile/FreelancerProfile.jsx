@@ -92,6 +92,27 @@ const FreelancerProfile = () => {
                 </Flex>
                 <Text fontSize={"sm"} color={"whiteAlpha.800"}>{freelancer.experience}</Text>
 
+                <Flex gap={2}>
+                    <Text 
+                        fontSize={"sm"} 
+                        fontStyle={'lg'} 
+                        fontWeight={'medium'} 
+                        color={'gray.200'}  // Slightly darker gray for labels
+                    >
+                        My work:
+                    </Text>
+                    <Text 
+                        fontSize={"sm"} 
+                        color={'blue.500'}  // Lighter gray for domain text
+                    >
+                        <a 
+                        href={freelancer.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{freelancer.githubLink}</a>
+                    </Text>
+                </Flex>
+
                 <VStack>
                   <Box w={'full'}><Text fontStyle={'lg'} fontWeight={'medium'} color={'whiteAlpha.800'}>Tech-Stack</Text></Box>
                   <Grid

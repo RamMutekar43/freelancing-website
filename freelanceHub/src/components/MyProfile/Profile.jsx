@@ -96,6 +96,27 @@ const Profile = ({ details }) => {
                     {details.experience}
                 </Text>
 
+                <Flex gap={2}>
+                    <Text 
+                        fontSize={"sm"} 
+                        fontStyle={'lg'} 
+                        fontWeight={'medium'} 
+                        color={'gray.200'}  // Slightly darker gray for labels
+                    >
+                        My work:
+                    </Text>
+                    <Text 
+                        fontSize={"sm"} 
+                        color={'blue.500'}  // Lighter gray for domain text
+                    >
+                        <a 
+                        href={details.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{details.githubLink}</a>
+                    </Text>
+                </Flex>
+
                 <VStack>
                     <Box w={'full'}>
                         <Text 
