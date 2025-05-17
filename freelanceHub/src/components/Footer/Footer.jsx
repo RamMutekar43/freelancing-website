@@ -180,7 +180,6 @@ export default function Footer() {
       <div className="border-t border-gray-700 mt-10 pt-6 text-sm text-center text-gray-500">
         &copy; {new Date().getFullYear()} FreelanceHub. All rights reserved.
       </div>
-
       {/* Removed Background Animation */}
     </VStack>
   );
