@@ -7,3 +7,23 @@
     }
   }
   
+#moving-text::-webkit-scrollbar {
+    display: none;
+}
+
+#text-con {
+    
+    animation-name: move;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes move {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
