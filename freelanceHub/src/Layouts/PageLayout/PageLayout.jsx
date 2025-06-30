@@ -21,7 +21,7 @@ const PageLayout = ({ children }) => {
       </Box>
 
       {/* Main content layout */}
-      <Flex>
+      <Flex >
         {/* Sidebar Toggle + Sidebar */}
         {isAuth && (
           <VStack spacing={0}>
@@ -60,6 +60,7 @@ const PageLayout = ({ children }) => {
           px={4}
           py={2}
           color="white"
+          scrollbar={'hidden'}
         >
           {children}
         </Box>

@@ -5,6 +5,9 @@ import Services from '../../components/Services/Services';
 import { Box } from '@chakra-ui/react';
 import ClientReviews from '../../components/ClientReviews/ClientReviews';
 import Footer from '../../components/Footer/Footer';
+import RunningAd from '../../components/Running ad/RunningAd';
+import '../../App.css'
+
 
 const HomePage = () => {
   return (
@@ -15,6 +18,7 @@ const HomePage = () => {
         borderRadius="md"
       >
         <WebInfo />
+        <RunningAd/>
         <Services />
         <ClientReviews />
         <Footer />
