@@ -68,6 +68,7 @@ const Services = () => {
     }
   ];
 
+  const user = localStorage.getItem("user")
   return (
     <Box bg="#0A0E1A" minH="100vh" color="whiteAlpha.800">
       <VStack pt={10}>
@@ -95,7 +96,7 @@ const Services = () => {
           w="full"
         >
           {services.map((e, key) => (
-            <Link to="/hire-job" key={key}>
+            <Link to={user?"/hire-job":"/login"} key={key}>
               <Service title={e.title} description={e.description} icon={e.icon} />
             </Link>
           ))}
